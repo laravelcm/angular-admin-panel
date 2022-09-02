@@ -1,0 +1,19 @@
+/* 
+ * Style.scss
+ * This is the main stylesheet for this project.
+ * 
+ * @author Arthur Monney<monney.arthur@isdg-sarl.com>
+ * @version 1.0.0
+ * @license MIT
+ * @since September 2022
+ * @see https://design.cosna-afrique.com for more information.
+ *
+*/
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import 'sass/_base';
+@import 'sass/_material';
+@import 'sass/_plugin';

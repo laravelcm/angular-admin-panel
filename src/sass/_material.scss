@@ -1,0 +1,11 @@
+/**
+ * Material Custom style
+ * @see https://material.io/guidelines/style/color.html#color-color-palette
+*/
+.mat-tab-labels {
+  background-color: theme('colors.slate.50') !important;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: theme('colors.green.600') !important;
+}
