@@ -3,31 +3,33 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngrx-app": {
+    "cosna-cpanel": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
+          "style": "scss",
+          "skipTests": true,
           "strict": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "cosna",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngrx-app",
+            "outputPath": "dist/cosna-cpanel",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -68,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngrx-app:build:production"
+              "browserTarget": "cosna-cpanel:build:production"
             },
             "development": {
-              "browserTarget": "ngrx-app:build:development"
+              "browserTarget": "cosna-cpanel:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngrx-app:build"
+            "browserTarget": "cosna-cpanel:build"
           }
         },
         "test": {
@@ -90,11 +92,10 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -102,5 +103,5 @@
       }
     }
   },
-  "defaultProject": "ngrx-app"
+  "defaultProject": "cosna-cpanel"
 }
