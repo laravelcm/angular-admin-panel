@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivateChild {
 
-  canActivate(): boolean {
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot, 
+    state: RouterStateSnapshot
+  ): boolean {
     return true;
   }
   
