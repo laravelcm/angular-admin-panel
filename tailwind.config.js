@@ -39,7 +39,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter var', ...fontFamily.sans],
-        mono: ['Roboto', ...fontFamily.mono],
+        mono: ['Roboto Mono', ...fontFamily.mono],
       }
     },
   },
