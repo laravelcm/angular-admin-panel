@@ -1,0 +1,20 @@
+<div class="shadow-sm cosna-group" [ngClass]="containerClass">
+  <label [for]="name" class="cosna-group_label">
+    {{ label }}
+    <ng-template [ngIf]="required">
+      <span class="text-red-500">*</span>
+    </ng-template>
+  </label>
+  <input matInput 
+    [name]="name" 
+    [type]="type" 
+    [id]="name" 
+    [(ngModel)]="value" 
+    placeholder="{{ placeholder }}" 
+    [ngClass]="inputClass"
+    class="cosna-group_input"
+  />
+</div>
+<ng-template [ngIf]="helpText">
+  <p class="mt-1 text-sm leading-5 text-slate-500">{{ helpText }}</p>
+</ng-template>

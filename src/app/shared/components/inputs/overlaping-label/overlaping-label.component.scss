@@ -1,0 +1,20 @@
+.cosna-group {
+  @apply relative border border-slate-300 rounded-md px-3 py-2.5 shadow-sm focus-within:ring-1 focus-within:ring-green-600 focus-within:border-green-600;
+
+  &.input-error {
+    @apply placeholder-red-300 border-red-300 text-red-500 focus-within:ring-red-600 focus-within:border-red-600;
+  }
+
+  &_label {
+    @apply absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-slate-900;
+  }
+
+  &_input {
+    @apply block w-full border-0 p-0 placeholder-slate-500 focus:ring-0 sm:text-sm outline-none;
+    
+  }
+}
+
+.form-error {
+  @apply mt-2 text-sm text-red-600;
+}
