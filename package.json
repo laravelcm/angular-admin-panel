@@ -22,6 +22,8 @@
     "@ngrx/router-store": "^13.2.0",
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
+    "@sentry/angular": "^7.12.1",
+    "@sentry/tracing": "^7.12.1",
     "@tailwindcss/aspect-ratio": "^0.4.1",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.1",
