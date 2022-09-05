@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@ngrx/effects": "^13.2.0",
+    "@ngrx/router-store": "^13.2.0",
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
     "@tailwindcss/aspect-ratio": "^0.4.1",
