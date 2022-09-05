@@ -6,13 +6,10 @@ import { Component, Input } from '@angular/core';
 })
 export class PrimaryComponent {
 
-  @Input()
-  type: string = 'button';
+  @Input() type: string = 'button';
 
-  @Input()
-  disabled: boolean = false;
-
-  @Input()
-  class: string = '';
+  @Input() disabled: boolean = false;
+  
+  @Input() class: string = '';
 
 }

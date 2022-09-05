@@ -7,10 +7,7 @@ import { CpanelComponent } from './layouts/cpanel/cpanel.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LogoComponent } from './components/logo/logo.component';
 
-const MODULES = [
-  CommonModule,
-  RouterModule
-];
+const MODULES = [CommonModule, RouterModule];
 
 @NgModule({
   declarations: [
