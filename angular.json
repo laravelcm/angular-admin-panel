@@ -10,6 +10,10 @@
           "style": "scss",
           "skipTests": true,
           "strict": true
+        },
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
         }
       },
       "root": "",
