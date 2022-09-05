@@ -8,17 +8,11 @@ import { Menu } from '@app/shared/interfaces/menu';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit  {
-  @Input() menus?: Menu[];
+  @Input() menus!: Menu[];
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    console.log(this.menus);
-  }
-
-  isArray(value: string | []): boolean {
-    return Array.isArray(value);
   }
 
 }
