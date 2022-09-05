@@ -7,6 +7,11 @@ import { CpanelComponent } from './layouts/cpanel/cpanel.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LogoComponent } from './components/logo/logo.component';
 
+const MODULES = [
+  CommonModule,
+  RouterModule
+];
+
 @NgModule({
   declarations: [
     AuthComponent,
@@ -14,7 +19,10 @@ import { LogoComponent } from './components/logo/logo.component';
     SidebarComponent,
     LogoComponent,
   ],
-  imports: [CommonModule, RouterModule],
-  exports: [RouterModule, CommonModule, LogoComponent],
+  imports: MODULES,
+  exports: [
+    LogoComponent,
+    ...MODULES,
+  ],
 })
 export class ThemeModule { }

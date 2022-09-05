@@ -7,22 +7,23 @@ import { ThemeModule } from './themes/theme.module';
 import { OverlapingLabelComponent } from './components/inputs/overlaping-label/overlaping-label.component';
 import { PrimaryComponent as ButtonPrimary } from './components/buttons/primary/primary.component';
 
+
+const MODULES = [CommonModule, ThemeModule];
+const DECLARATIONS = [
+  ButtonPrimary,
+  OverlapingLabelComponent,
+];
+
 @NgModule({
-  declarations: [
-    OverlapingLabelComponent,
-    ButtonPrimary,
-  ],
+  declarations: DECLARATIONS,
   imports: [
-    CommonModule,
-    ThemeModule,
     FormsModule,
     ReactiveFormsModule,
+    ...MODULES
   ],
-  exports: [
-    CommonModule, 
-    ThemeModule, 
-    OverlapingLabelComponent,
-    ButtonPrimary,
+  exports: [ 
+    ...DECLARATIONS,
+    ...MODULES
   ],
 })
 export class SharedModule { }
