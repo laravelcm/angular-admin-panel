@@ -11,6 +11,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './core/routes/app-routing.module';
 import { AppComponent } from './core/components/app/app.component';
+import { ROOT_REDUCERS } from './core/store/app.store';
+import { ROOT_EFFECTS } from './core/store/app.effects';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,11 @@ import { AppComponent } from './core/components/app/app.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot(ROOT_EFFECTS),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
   ],
