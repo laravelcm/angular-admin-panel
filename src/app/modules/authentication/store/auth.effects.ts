@@ -24,7 +24,7 @@ export class AuthEffects {
           catchError((error) => {
             return of(
               AuthActions.authenticateFailureAction({
-                error: error?.message ?? 'Unknown error occurred',
+                error: error.error?.message ?? 'Unknown error occurred',
               })
             )
           })

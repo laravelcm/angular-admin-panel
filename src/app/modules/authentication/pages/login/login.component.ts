@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { authenticateAction } from '../../store/auth.actions';
-import { selectError } from '../../store/auth.selectors';
+import { selectError, selectLoading } from '../../store/auth.selectors';
 
 @Component({
   templateUrl: './login.component.html',
@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   });
   public error$: Observable<string | null> = this.store.select(selectError);
+  public loading$: Observable<boolean> = this.store.select(selectLoading);
   
   constructor(private formBuilder: FormBuilder, private store: Store) {}
 
@@ -22,7 +23,6 @@ export class LoginComponent implements OnInit {
 
   public submit() {
     if (this.form.valid) {
-      // console.log(this.form.getRawValue());
       this.store.dispatch(authenticateAction({ credentials: this.form.getRawValue() }));
     }
   }

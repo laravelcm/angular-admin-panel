@@ -6,12 +6,14 @@ import { ThemeModule } from './themes/theme.module';
 
 import { OverlapingLabelComponent } from './components/inputs/overlaping-label/overlaping-label.component';
 import { PrimaryComponent as ButtonPrimary } from './components/buttons/primary/primary.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 const MODULES = [CommonModule, ThemeModule];
 const DECLARATIONS = [
   ButtonPrimary,
   OverlapingLabelComponent,
+  ErrorComponent,
 ];
 
 @NgModule({
