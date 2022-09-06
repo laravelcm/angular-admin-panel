@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
-  public email!: string;
-  public password!: string;
+  public form: FormGroup = this.formBuilder.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  });
   public error!: string;
-  date: number = (new Date()).getFullYear();
   
-  constructor() {}
-
-  getValue(value: string) {
-    console.log(value);
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {}
 
   public submit() {
-    console.log(this.email, this.password);
+    console.log(this.form.getRawValue());
   }
 
 }
