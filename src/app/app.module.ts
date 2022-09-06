@@ -13,7 +13,6 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './core/routes/app-routing.module';
 import { AppComponent } from './core/components/app/app.component';
 import { ROOT_REDUCERS } from './core/store/app.store';
-import { ROOT_EFFECTS } from './core/store/app.effects';
 import { Router } from '@angular/router';
 
 @NgModule({
@@ -24,7 +23,7 @@ import { Router } from '@angular/router';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    EffectsModule.forRoot(ROOT_EFFECTS),
+    EffectsModule.forRoot(),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
