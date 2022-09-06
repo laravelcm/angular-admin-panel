@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cosna-button-primary',
@@ -8,8 +9,8 @@ export class PrimaryComponent {
 
   @Input() type: string = 'button';
 
-  @Input() disabled: boolean = false;
+  @Input() loading$!: Observable<boolean>;
   
-  @Input() class: string = '';
+  @Input() class!: string;
 
 }
