@@ -1,8 +1,17 @@
 export interface AuthResponse {
-  user: User;
-  access_token: string;
-  token_type: string;
-  expires_at: Date;
+  message: string;
+  data: {
+    user: User;
+    access_token: string;
+    token_type: string;
+    expires_at: FromDate;
+  }
+}
+
+export interface FromDate {
+  date: Date;
+  timezone_type: number;
+  timezone: string;
 }
 
 export interface User {

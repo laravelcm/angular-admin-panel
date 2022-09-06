@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { User } from '@app/modules/user/interfaces/user.interface';
+import { AuthResponse, User } from '@app/modules/user/interfaces/user.interface';
 import { Credentials } from '../interfaces/credentials.interface';
 import { environment } from 'environments/environment';
 
@@ -12,8 +12,8 @@ import { environment } from 'environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  public authenticate(credentials: Credentials): Observable<User> {
-    return this.http.post<User>( 
+  public authenticate(credentials: Credentials): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>( 
       `${environment.apiUrl}/login`, 
       credentials
     );

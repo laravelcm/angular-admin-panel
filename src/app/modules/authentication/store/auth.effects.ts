@@ -7,7 +7,8 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../services/auth.service';
 import { Credentials } from '../interfaces/credentials.interface';
-import { User } from '@app/modules/user/interfaces/user.interface';
+import { AuthResponse, User } from '@app/modules/user/interfaces/user.interface';
+import { AccessTokenService } from '../services/access-token.service';
 
 @Injectable()
 export class AuthEffects {
@@ -16,10 +17,10 @@ export class AuthEffects {
       ofType(AuthActions.authenticateAction),
       switchMap(({ credentials }: { credentials: Credentials }) => 
         this.authService.authenticate(credentials).pipe(
-          map((user: User) => {
-            console.log(user);
+          map((authResponse: AuthResponse) => {
+            this.accessTokenService.setAccessToken(authResponse.data.access_token);
             this.router.navigateByUrl('/dashboard');
-            return AuthActions.fetchAuthenticateSuccessAction({ user });
+            return AuthActions.fetchAuthenticateSuccessAction({ user: authResponse.data.user });
           }),
           catchError((error) => {
             return of(
@@ -56,6 +57,7 @@ export class AuthEffects {
       ofType(AuthActions.logoutAction),
       switchMap(() => this.authService.logout().pipe(
         map(() => {
+          this.accessTokenService.removeAccessToken();
           this.router.navigateByUrl('/auth/login');
           return AuthActions.logoutSuccessAction();
         }),
@@ -67,6 +69,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
+    private accessTokenService: AccessTokenService,
     private router: Router
   ) {}
 }
