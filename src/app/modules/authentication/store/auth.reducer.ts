@@ -49,6 +49,7 @@ export const authReducer = createReducer(
         ...state,
         isLoading: false,
         error,
+        message: null,
       }
     }
   ),

@@ -7,7 +7,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../services/auth.service';
 import { Credentials, ResetPasswordCredentials } from '../interfaces/credentials.interface';
-import { AuthResponse, User } from '@app/modules/user/interfaces/user.interface';
+import { AuthResponse } from '@app/modules/user/interfaces/user.interface';
 import { AccessTokenService } from '../services/access-token.service';
 
 @Injectable()
@@ -18,14 +18,14 @@ export class AuthEffects {
       switchMap(({ credentials }: { credentials: Credentials }) => 
         this.authService.authenticate(credentials).pipe(
           map((authResponse: AuthResponse) => {
-            this.accessTokenService.setAccessToken(authResponse.data.access_token);
+            this.accessTokenService.setAccessToken(authResponse.data.access_token, authResponse.data.expires_in);
             this.router.navigateByUrl('/dashboard');
             return AuthActions.fetchAuthenticateSuccessAction({ user: authResponse.data.user });
           }),
           catchError((error) => {
             return of(
               AuthActions.authenticateFailureAction({
-                error: error.error?.message ?? 'Unknown error occurred',
+                error: error.error?.message ?? 'Une erreur est survenue',
               })
             )
           })
@@ -42,7 +42,7 @@ export class AuthEffects {
         catchError((error) => {
           return of(
             AuthActions.forgotPasswordFailureAction({
-              error: error.error?.message ?? 'Unknown error occurred',
+              error: error.error?.message ?? 'Une erreur est survenue',
             })
           )
         })
@@ -58,7 +58,7 @@ export class AuthEffects {
         catchError((error) => {
           return of(
             AuthActions.resetPasswordFailureAction({
-              error: error.error?.message ?? 'Unknown error occurred',
+              error: error.error?.message ?? 'Une erreur est survenue',
             })
           )
         }
@@ -70,7 +70,10 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.getCurrentUserAction),
       switchMap(() => this.authService.getCurrentUser().pipe(
-        map((user: User | null) => AuthActions.fetchCurrentUserSuccessAction({ user })),
+        map(({ data }: any) => {
+          console.log(data);
+          return AuthActions.fetchCurrentUserSuccessAction({ user: data.user })
+        }),
         catchError(() => EMPTY)
       ))
   )

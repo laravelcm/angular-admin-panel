@@ -18,8 +18,8 @@ export class AuthGuard implements CanActivateChild {
   canActivateChild(): Observable<boolean> {
     return this.store.select(selectIsLoggedIn).pipe(
       first((value) => value !== null),
-      map((isLoggedIn: boolean | null) => {
-        if (! isLoggedIn && ! this.accessTokenService.getAccessToken()) {
+      map(() => {
+        if ( ! this.accessTokenService.getAccessToken()) {
           this.router.navigateByUrl('/auth/login')
           return false;
         }

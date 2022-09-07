@@ -1,9 +1,9 @@
+import { Params } from '@angular/router';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { selectQueryParams } from '@app/core/store/router.selectors';
 import { AuthState } from '../interfaces/state.interface';
 import { authFeatureKey } from './auth.reducer';
-import { Params } from '@angular/router';
 
 const authSelectorFeature = createFeatureSelector<AuthState>(authFeatureKey);
 
