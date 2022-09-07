@@ -1,5 +1,6 @@
-export interface AuthResponse {
-  message: string;
+import { AppHttpResponse } from '@app/shared/interfaces/response.interface';
+
+export interface AuthResponse extends AppHttpResponse {
   data: {
     user: User;
     access_token: string;

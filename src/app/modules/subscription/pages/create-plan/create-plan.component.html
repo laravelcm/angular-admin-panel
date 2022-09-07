@@ -1,0 +1,11 @@
+<h2>Formulaire de creation!</h2>
+
+<form [formGroup]="form" (submit)="submit()" class="space-y-6">
+  <input type="text" formControlName="name" class="block border border-slate-300">
+  <input type="text" formControlName="description" class="block border border-slate-300">
+  <input type="number" formControlName="price" class="block border border-slate-300">
+
+  <cosna-button-primary type="submit" [loading$]="loading$">
+    Enregistrer
+  </cosna-button-primary>
+</form>
