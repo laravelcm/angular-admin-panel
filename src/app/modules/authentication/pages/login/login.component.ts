@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
+  
   public error$: Observable<string | null> = this.store.select(selectError);
+
   public loading$: Observable<boolean> = this.store.select(selectLoading);
   
   constructor(private formBuilder: FormBuilder, private store: Store) {}
