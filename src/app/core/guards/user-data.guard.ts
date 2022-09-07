@@ -1,36 +1,29 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { first, map, Observable } from 'rxjs';
+import { CanActivateChild } from '@angular/router';
 
-import { getCurrentUserAction } from '@app/modules/authentication/store/auth.actions';
 import { selectCurrentUser } from '@app/modules/authentication/store/auth.selectors';
+import { getCurrentUserAction } from '@app/modules/authentication/store/auth.actions';
 import { User } from '@app/modules/user/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
-
+export class UserDataGuard implements CanActivateChild {
   constructor(private store: Store) {}
 
-  emails: string[] = [
-    'manfouothierno@isdg-sarl.com',
-    'patouossaibrahim@yahoo.com',
-    'monneylobe@gmail.com',
-  ];
-
-  canActivate(): Observable<boolean> {
+  canActivateChild(): Observable<boolean> {
     return this.store.select(selectCurrentUser).pipe(
       first(),
       map((user: User | null) => {
-        if (!user) {
+        if (! user) {
           this.store.dispatch(getCurrentUserAction());
-          return false;
         }
-        return this.emails.includes(user.email);
-      })
+        console.log(user);
+        return true;
+      })  
     );
   }
-  
+
 }

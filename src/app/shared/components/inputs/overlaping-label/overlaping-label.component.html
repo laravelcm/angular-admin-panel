@@ -7,12 +7,14 @@
   </label>
   <input matInput 
     [name]="name" 
+    [id]="name"
     [type]="type" 
-    [id]="name" 
-    [(ngModel)]="value" 
-    placeholder="{{ placeholder }}"
+    [value]="value"
+    (input)="onChange($any($event.target).value)"
+    (blur)="onTouched()"
+    [placeholder]="placeholder ? placeholder : ''"
     [ngClass]="inputClass"
-    class="block w-full p-0 border-0 outline-none placeholder-slate-500 focus:ring-0 sm:text-sm"
+    class="block w-full p-0 border-0 outline-none placeholder-slate-500 text-slate-700 focus:ring-0 sm:text-sm"
   />
 </div>
 <ng-template [ngIf]="helpText">

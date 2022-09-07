@@ -1,5 +1,5 @@
 import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,8 +13,8 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './core/routes/app-routing.module';
 import { AppComponent } from './core/components/app/app.component';
 import { ROOT_REDUCERS } from './core/store/app.store';
-import { ROOT_EFFECTS } from './core/store/app.effects';
 import { Router } from '@angular/router';
+import { AuthInterceptor } from './modules/authentication/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { Router } from '@angular/router';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    EffectsModule.forRoot(ROOT_EFFECTS),
+    EffectsModule.forRoot(),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -49,6 +49,11 @@ import { Router } from '@angular/router';
       deps: [Sentry.TraceService],
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent],
 })
