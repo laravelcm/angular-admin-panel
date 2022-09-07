@@ -20,6 +20,7 @@ export const authReducer = createReducer(
     AuthActions.authenticateAction, 
     AuthActions.forgotPasswordAction,
     AuthActions.resetPasswordAction,
+    AuthActions.logoutAction,
     (state: AuthState): AuthState => {
       return {
         ...state,

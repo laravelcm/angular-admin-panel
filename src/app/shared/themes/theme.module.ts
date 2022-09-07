@@ -6,6 +6,7 @@ import { AuthComponent } from './layouts/auth/auth.component';
 import { CpanelComponent } from './layouts/cpanel/cpanel.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const MODULES = [CommonModule, RouterModule];
 
@@ -15,6 +16,7 @@ const MODULES = [CommonModule, RouterModule];
     CpanelComponent,
     SidebarComponent,
     LogoComponent,
+    HeaderComponent,
   ],
   imports: MODULES,
   exports: [

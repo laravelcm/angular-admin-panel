@@ -1,0 +1,62 @@
+<header class="p-6 border-b border-slate-100 sm:px-8">
+  <div class="flex items-center justify-between">
+    <div class="max-w-lg">
+      <!-- SearchBar Component -->
+    </div>
+    <div class="flex items-center divide-x divide-slate-200">
+      <a href="#" class="flex items-center pr-4 text-sm leading-5 text-slate-500 hover:text-slate-700">
+        <svg class="w-6 h-6 mr-2 text-slate-400" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M2.5 12h3.382c.685 0 1.312.387 1.618 1 .306.613.933 1 1.618 1h5.764c.685 0 1.312-.387 1.618-1 .306-.613.933-1 1.618-1H21.5M8.967 4h6.066c1.077 0 1.616 0 2.091.164a3 3 0 0 1 1.121.693c.36.352.6.833 1.082 1.796l2.166 4.333c.19.378.284.567.35.765.06.177.102.357.128.541.029.207.029.418.029.841V15.2c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C19.72 20 18.88 20 17.2 20H6.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C2 17.72 2 16.88 2 15.2v-2.067c0-.422 0-.634.029-.84.026-.184.068-.365.128-.541.066-.199.16-.388.35-.766l2.166-4.333c.482-.963.723-1.444 1.082-1.796a3 3 0 0 1 1.12-.693C7.352 4 7.89 4 8.968 4Z"/>
+        </svg>
+        Vous rencontrez un problème ?
+      </a>
+      <div class="flex items-center pl-4 space-x-3">
+        <button type="button" class="inline-flex items-center p-1 text-sm leading-5 rounded-full hover:bg-slate-50 text-slate-500 hover:text-slate-900 focus:outline-none">
+          <svg class="w-6 h-6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M9.354 21c.705.622 1.632 1 2.646 1s1.94-.378 2.646-1M18 8A6 6 0 1 0 6 8c0 3.09-.78 5.206-1.65 6.605-.735 1.18-1.102 1.771-1.089 1.936.015.182.054.252.2.36.133.099.732.099 1.928.099H18.61c1.196 0 1.795 0 1.927-.098.147-.11.186-.179.2-.361.014-.165-.353-.755-1.088-1.936C18.78 13.206 18 11.09 18 8Z"/>
+          </svg>
+        </button>
+        <div class="relative" #menuDropdown>
+          <button 
+            type="button" 
+            class="flex items-center text-sm rounded-full focus:outline-none" 
+            id="user-menu-button" 
+            aria-expanded="false" 
+            aria-haspopup="true"
+            (click)="toggleMobileMenu()"
+          >
+            <span class="sr-only">Open user menu</span>
+            <img class="w-8 h-8 rounded-full" *ngIf="user$ | async; let user" [src]="user.profilePhotoUrl" [alt]="user.name">
+          </button>
+          <div 
+            [@openClose]="openCloseTrigger"
+            class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg divide-slate-100 ring-1 ring-black ring-opacity-5 focus:outline-none" 
+            role="menu" 
+            aria-orientation="vertical" 
+            aria-labelledby="menu-button" 
+            tabindex="-1"
+          >
+            <div class="px-4 py-3" role="none">
+              <p class="text-sm" role="none">Connecté avec</p>
+              <p class="text-sm font-medium truncate text-slate-900" role="none" *ngIf="user$ | async; let user">{{ user.email }}</p>
+            </div>
+            <div class="py-1" role="none">
+              <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900" role="menuitem" tabindex="-1" id="menu-item-0">Mon compte</a>
+              <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+              <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900" role="menuitem" tabindex="-1" id="menu-item-2">Guide d'utilisation</a>
+            </div>
+            <div class="flex items-center justify-between py-1" role="none">
+              <button type="button" (click)="logout()" class="block w-full px-4 py-2 text-sm text-left text-slate-700" role="menuitem" tabindex="-1" id="menu-item-3">Se déconnecter</button>
+              <span *ngIf="(loading$ | async)" class="flex items-center px-3">
+                <svg class="w-5 h-5 mr-3 -ml-1 text-green-500 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
