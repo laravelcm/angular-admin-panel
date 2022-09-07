@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivateChild } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { first, map, Observable } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { User } from '@app/modules/user/interfaces/user.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class AdminGuard implements CanActivateChild {
 
   constructor(private store: Store) {}
 
@@ -20,7 +20,7 @@ export class AdminGuard implements CanActivate {
     'monneylobe@gmail.com',
   ];
 
-  canActivate(): Observable<boolean> {
+  canActivateChild(): Observable<boolean> {
     return this.store.select(selectCurrentUser).pipe(
       first(),
       map((user: User | null) => {
