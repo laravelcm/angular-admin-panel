@@ -14,10 +14,4 @@ export const routes: Routes = [
       import('@modules/dashboard/dashboard.module')
       .then(m => m.DashboardModule)
   },
-  {
-    path: 'plans',
-    loadChildren: () =>
-      import('@modules/subscription/subscription.module')
-      .then(m => m.SubscriptionModule)
-  }
 ];
