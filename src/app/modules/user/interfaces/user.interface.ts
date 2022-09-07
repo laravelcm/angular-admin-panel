@@ -21,6 +21,7 @@ export interface User {
   email: string;
   phoneNumber: string;
   accountType: string;
+  profilePhotoUrl: string;
   timezone: string;
   emailVerifiedAt: string;
   roles: string[];

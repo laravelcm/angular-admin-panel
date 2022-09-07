@@ -70,10 +70,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.getCurrentUserAction),
       switchMap(() => this.authService.getCurrentUser().pipe(
-        map(({ data }: any) => {
-          console.log(data);
-          return AuthActions.fetchCurrentUserSuccessAction({ user: data.user })
-        }),
+        map(({ data }: any) => AuthActions.fetchCurrentUserSuccessAction({ user: data.user })),
         catchError(() => EMPTY)
       ))
   )

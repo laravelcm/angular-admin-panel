@@ -20,7 +20,6 @@ export class UserDataGuard implements CanActivateChild {
         if (! user) {
           this.store.dispatch(getCurrentUserAction());
         }
-        console.log(user);
         return true;
       })  
     );
