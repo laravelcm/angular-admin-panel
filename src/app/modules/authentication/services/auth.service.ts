@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { AuthResponse, User } from '@app/modules/user/interfaces/user.interface';
-import { Credentials } from '../interfaces/credentials.interface';
 import { environment } from 'environments/environment';
+import { AuthResponse, User } from '@app/modules/user/interfaces/user.interface';
+import { Credentials, ResetPasswordCredentials } from '../interfaces/credentials.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +26,10 @@ export class AuthService {
     );
   }
 
-  public resetPassword(email: string, password: string, confirmPassword: string): Observable<any> {
+  public resetPassword(credentials: ResetPasswordCredentials): Observable<any> {
     return this.http.post(
       `${environment.apiUrl}/reset-password`, 
-      { email, password, confirmPassword }
+      credentials
     );
   }
 

@@ -1,7 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
+import { selectQueryParams } from '@app/core/store/router.selectors';
 import { AuthState } from '../interfaces/state.interface';
 import { authFeatureKey } from './auth.reducer';
+import { Params } from '@angular/router';
 
 const authSelectorFeature = createFeatureSelector<AuthState>(authFeatureKey);
 
@@ -28,4 +30,9 @@ export const selectMessage = createSelector(
 export const selectLoading = createSelector(
   authSelectorFeature,
   (state: AuthState) => state.isLoading
+);
+
+export const selectResetPasswordToken = createSelector(
+  selectQueryParams,
+  (params: Params) => params['token']
 );

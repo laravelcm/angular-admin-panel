@@ -65,13 +65,12 @@ export const authReducer = createReducer(
   ),
   on(
     AuthActions.resetPasswordSuccessAction,
-    (state: AuthState, { message, user }: { message: string, user: User }): AuthState => {
+    (state: AuthState, { message }: { message: string }): AuthState => {
       return {
         ...state,
         isLoading: false,
         error: null,
         message,
-        user,
       }
     }
   ),

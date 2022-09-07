@@ -6,7 +6,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../services/auth.service';
-import { Credentials } from '../interfaces/credentials.interface';
+import { Credentials, ResetPasswordCredentials } from '../interfaces/credentials.interface';
 import { AuthResponse, User } from '@app/modules/user/interfaces/user.interface';
 import { AccessTokenService } from '../services/access-token.service';
 
@@ -38,12 +38,8 @@ export class AuthEffects {
     ofType(AuthActions.forgotPasswordAction),
     switchMap(({ email }: { email: string }) => 
       this.authService.forgotPassword(email).pipe(
-        map(({ message }: { message: string }) => {
-          console.log(message);
-          return AuthActions.forgotPasswordSuccessAction({ message })
-        }),
+        map(({ message }: { message: string }) => AuthActions.forgotPasswordSuccessAction({ message })),
         catchError((error) => {
-          console.log(error);
           return of(
             AuthActions.forgotPasswordFailureAction({
               error: error.error?.message ?? 'Unknown error occurred',
@@ -56,6 +52,18 @@ export class AuthEffects {
 
   resetPasswordEffect = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.resetPasswordAction),
+    switchMap(({ credentials }: { credentials: ResetPasswordCredentials }) =>
+      this.authService.resetPassword(credentials).pipe(
+        map(({ message }: { message: string }) => AuthActions.resetPasswordSuccessAction({ message })),
+        catchError((error) => {
+          return of(
+            AuthActions.resetPasswordFailureAction({
+              error: error.error?.message ?? 'Unknown error occurred',
+            })
+          )
+        }
+      ))
+    )
   ));
 
   getCurrentUserEffect = createEffect(() => 

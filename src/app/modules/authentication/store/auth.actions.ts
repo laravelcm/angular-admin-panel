@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Credentials } from '../interfaces/credentials.interface';
+import { Credentials, ResetPasswordCredentials } from '../interfaces/credentials.interface';
 
 import { User } from '@app/modules/user/interfaces/user.interface';
 
@@ -35,12 +35,12 @@ export const forgotPasswordFailureAction = createAction(
 
 export const resetPasswordAction = createAction(
   '[Auth] Reset Password',
-  props<{ email: string, password: string, confirmPassword: string }>()
+  props<{ credentials: ResetPasswordCredentials }>()
 );
 
 export const resetPasswordSuccessAction = createAction(
   '[Auth] Reset Password Success',
-  props<{ message: string, user: User }>()
+  props<{ message: string }>()
 );
 
 export const resetPasswordFailureAction = createAction(
