@@ -58,6 +58,7 @@ export const authReducer = createReducer(
       return {
         ...state,
         isLoading: false,
+        error: null,
         message,
       }
     }
@@ -68,6 +69,7 @@ export const authReducer = createReducer(
       return {
         ...state,
         isLoading: false,
+        error: null,
         message,
         user,
       }

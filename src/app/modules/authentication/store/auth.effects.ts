@@ -36,6 +36,22 @@ export class AuthEffects {
 
   forgotPasswordEffect = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.forgotPasswordAction),
+    switchMap(({ email }: { email: string }) => 
+      this.authService.forgotPassword(email).pipe(
+        map(({ message }: { message: string }) => {
+          console.log(message);
+          return AuthActions.forgotPasswordSuccessAction({ message })
+        }),
+        catchError((error) => {
+          console.log(error);
+          return of(
+            AuthActions.forgotPasswordFailureAction({
+              error: error.error?.message ?? 'Unknown error occurred',
+            })
+          )
+        })
+      )
+    )
   ));
 
   resetPasswordEffect = createEffect(() => this.actions$.pipe(
