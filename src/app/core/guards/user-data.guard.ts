@@ -20,7 +20,6 @@ export class UserDataGuard implements CanActivate {
         if (!user) {
           this.store.dispatch(getCurrentUserAction());
         }
-
         return true;
       })
     );
