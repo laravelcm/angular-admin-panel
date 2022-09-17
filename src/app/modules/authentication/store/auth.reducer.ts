@@ -6,10 +6,12 @@ import { User } from '@app/modules/user/interfaces/user.interface';
 
 export const authState: AuthState = {
   isLoggedIn: false,
-  isLoading: false,
   user: null,
+  roles: [],
+  permissions: [],
   error: null,
   message: null,
+  loading: false,
 };
 
 export const authFeatureKey = 'auth';
@@ -17,73 +19,111 @@ export const authFeatureKey = 'auth';
 export const authReducer = createReducer(
   authState,
   on(
-    AuthActions.authenticateAction, 
+    AuthActions.authenticateAction,
     AuthActions.forgotPasswordAction,
     AuthActions.resetPasswordAction,
     AuthActions.logoutAction,
     (state: AuthState): AuthState => {
       return {
         ...state,
-        isLoading: true,
-      }
+        loading: true,
+      };
     }
   ),
   on(
     AuthActions.fetchAuthenticateSuccessAction,
+    (
+      state: AuthState,
+      {
+        user,
+        roles,
+        permissions,
+      }: { user: User | null; roles: string[]; permissions: string[] }
+    ): AuthState => {
+      return {
+        ...state,
+        user,
+        roles,
+        permissions,
+        isLoggedIn: user ? true : false,
+        loading: false,
+        error: null,
+        message: null,
+      };
+    }
+  ),
+  on(
     AuthActions.fetchCurrentUserSuccessAction,
     (state: AuthState, { user }: { user: User | null }): AuthState => {
       return {
         ...state,
         user,
-        isLoggedIn: user ? true : false,
-        isLoading: false,
+        loading: false,
+        message: null,
         error: null,
-      }
+      };
     }
   ),
   on(
-    AuthActions.authenticateFailureAction,
-    AuthActions.forgotPasswordFailureAction,
-    AuthActions.resetPasswordFailureAction,
+    AuthActions.fetchAuthenticateFailureAction,
+    AuthActions.fetchForgotPasswordFailureAction,
+    AuthActions.fetchResetPasswordFailureAction,
     (state: AuthState, { error }: { error: string }): AuthState => {
       return {
         ...state,
-        isLoading: false,
+        loading: false,
         error,
         message: null,
-      }
+      };
     }
   ),
   on(
-    AuthActions.forgotPasswordSuccessAction,
+    AuthActions.fetchForgotPasswordSuccessAction,
     (state: AuthState, { message }: { message: string }): AuthState => {
       return {
         ...state,
-        isLoading: false,
+        loading: false,
         error: null,
         message,
-      }
+      };
     }
   ),
   on(
-    AuthActions.resetPasswordSuccessAction,
+    AuthActions.fetchResetPasswordSuccessAction,
     (state: AuthState, { message }: { message: string }): AuthState => {
       return {
         ...state,
-        isLoading: false,
+        loading: false,
         error: null,
         message,
-      }
+      };
     }
   ),
-  on(AuthActions.logoutSuccessAction, (state: AuthState): AuthState => {
+  on(AuthActions.fetchLogoutSuccessAction, (state: AuthState): AuthState => {
     return {
       ...state,
       isLoggedIn: false,
-      isLoading: false,
+      loading: false,
       user: null,
+      roles: [],
+      permissions: [],
       error: null,
       message: null,
     };
-  })
-);  
+  }),
+  on(
+    AuthActions.fetchUserRolesAndPermissionsSuccessAction,
+    (
+      state: AuthState,
+      { roles, permissions }: { roles: string[]; permissions: string[] }
+    ): AuthState => {
+      return {
+        ...state,
+        permissions,
+        roles,
+        message: null,
+        loading: false,
+      };
+    }
+  )
+);

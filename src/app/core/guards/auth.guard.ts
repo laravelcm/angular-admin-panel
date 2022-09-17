@@ -1,32 +1,24 @@
 import { Injectable } from '@angular/core';
-import { CanActivateChild, Router } from '@angular/router';
-import { AccessTokenService } from '@app/modules/authentication/services/access-token.service';
-import { selectIsLoggedIn } from '@app/modules/authentication/store/auth.selectors';
-import { Store } from '@ngrx/store';
-import { filter, first, map, Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
+
+import { LocalStorageService } from '@app/modules/authentication/services/local-storage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthGuard implements CanActivateChild {
+export class AuthGuard implements CanActivate {
   constructor(
-    private store: Store,
     private router: Router,
-    private accessTokenService: AccessTokenService
+    private localStorageService: LocalStorageService
   ) {}
 
-  canActivateChild(): Observable<boolean> {
-    return this.store.select(selectIsLoggedIn).pipe(
-      first((value) => value !== null),
-      map(() => {
-        if ( ! this.accessTokenService.getAccessToken()) {
-          this.router.navigateByUrl('/auth/login')
-          return false;
-        }
+  canActivate(): boolean {
+    if (!this.localStorageService.getAccessToken()) {
+      this.router.navigateByUrl('/auth/login');
 
-        return true;
-      })
-    );
+      return false;
+    }
+
+    return true;
   }
-  
 }

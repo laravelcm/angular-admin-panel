@@ -5,7 +5,7 @@ module.exports = {
   important: true,
   darkMode: 'class',
   content: [
-    "./src/**/*.{html,ts}",
+    './src/**/*.{html,ts}',
   ],
   theme: {
     extend: {
@@ -40,6 +40,12 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...fontFamily.sans],
         mono: ['Roboto Mono', ...fontFamily.mono],
+      },
+      maxWidth: {
+        '8xl': '90rem',
+      },
+      screens: {
+        '2xl': '1536px',
       }
     },
   },

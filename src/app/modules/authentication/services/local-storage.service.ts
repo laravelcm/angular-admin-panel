@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AccessTokenService {
-  constructor() { }
+export class LocalStorageService {
+  constructor() {}
 
   public setAccessToken(accessToken: string, expiredIn: number): void {
     localStorage.setItem('accessToken', accessToken);
@@ -12,20 +12,26 @@ export class AccessTokenService {
   }
 
   public getAccessToken(): string | null {
-  return localStorage.getItem('accessToken');
+    return localStorage.getItem('accessToken');
   }
 
   public removeAccessToken(): void {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('expiredIn');
+    localStorage.clear();
   }
 
   public tokenExpired(): boolean {
-    return !this.getAccessToken() && parseInt(localStorage.getItem('expiredIn') || '0') <= 0
+    return (
+      !this.getAccessToken() &&
+      parseInt(localStorage.getItem('expiredIn') || '0') <= 0
+    );
   }
 
   public setLocalStorage(key: string, value: any): void {
     localStorage.setItem(key, value);
+  }
+
+  public getLocalStorage(key: string): string | null {
+    return localStorage.getItem(key);
   }
 
   payload(token: string): any {

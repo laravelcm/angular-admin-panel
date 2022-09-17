@@ -1,11 +1,12 @@
-<div class="relative border border-slate-300 rounded-md px-3 py-2.5 shadow-sm focus-within:ring-1 focus-within:ring-green-600 focus-within:border-green-600 cosna-group" [ngClass]="containerClass">
+<div class="relative border border-slate-300 rounded-md px-3 py-2.5 shadow-sm focus-within:ring-1 focus-within:ring-primary-600 focus-within:border-primary-600 cosna-group" [ngClass]="containerClass">
   <label [for]="name" class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white -top-2 left-2 text-slate-700">
     {{ label }}
     <ng-template [ngIf]="required">
       <span class="text-red-500">*</span>
     </ng-template>
   </label>
-  <input matInput 
+  <input 
+    matInput 
     [name]="name" 
     [id]="name"
     [type]="type" 

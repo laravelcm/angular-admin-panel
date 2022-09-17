@@ -1,13 +1,21 @@
-import { AppHttpResponse } from '@app/shared/interfaces/response.interface';
+import { Pagination } from '@app/shared/interfaces/response.interface';
+import { DefaultState } from '@app/shared/interfaces/state.interfaces';
 
-export interface AuthResponse extends AppHttpResponse {
+export interface UserState extends DefaultState {
+  pagination: Pagination;
+}
+
+export interface AuthResponse {
+  message: string;
   data: {
     user: User;
     access_token: string;
     token_type: string;
     expires_at: FromDate;
     expires_in: number;
-  }
+    roles: string[];
+    permissions: string[];
+  };
 }
 
 export interface FromDate {
@@ -25,8 +33,6 @@ export interface User {
   profilePhotoUrl: string;
   timezone: string;
   emailVerifiedAt: string;
-  roles: string[];
-  permissions: string[];
   createdAt: Date;
   updatedAt: Date;
 }

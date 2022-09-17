@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'cosna-auth-layout',
   templateUrl: './auth.component.html',
 })
-export class AuthComponent implements OnInit {
-  date: number = (new Date()).getFullYear();
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class AuthComponent {
+  date: number = new Date().getFullYear();
 }

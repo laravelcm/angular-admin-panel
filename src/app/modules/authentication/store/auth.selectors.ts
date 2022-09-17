@@ -12,6 +12,26 @@ export const selectCurrentUser = createSelector(
   (state: AuthState) => state.user
 );
 
+export const selectUserRoles = createSelector(
+  authSelectorFeature,
+  (state: AuthState) => state.roles
+);
+
+export const selectUserPermissions = createSelector(
+  authSelectorFeature,
+  (state: AuthState) => state.permissions
+);
+
+export const selectRolesAndPermissions = createSelector(
+  authSelectorFeature,
+  (state: AuthState) => {
+    return {
+      roles: state.roles,
+      permissions: state.permissions,
+    };
+  }
+);
+
 export const selectError = createSelector(
   authSelectorFeature,
   (state: AuthState) => state.error
@@ -29,7 +49,7 @@ export const selectMessage = createSelector(
 
 export const selectLoading = createSelector(
   authSelectorFeature,
-  (state: AuthState) => state.isLoading
+  (state: AuthState) => state.loading
 );
 
 export const selectResetPasswordToken = createSelector(

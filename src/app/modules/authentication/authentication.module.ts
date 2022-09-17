@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { SharedModule } from '@shared/shared.module';
-import { authRoutes } from './routes/authenticate.routes';
+import { AUTH_ROUTES } from './routes/authenticate.routes';
 
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,17 +17,17 @@ import { AuthEffects } from './store/auth.effects';
   declarations: [
     LoginComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
   ],
   imports: [
     EffectsModule.forFeature([AuthEffects]),
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(authRoutes),
+    RouterModule.forChild(AUTH_ROUTES),
     SharedModule,
-    StoreModule.forFeature(authFeatureKey, authReducer)
+    StoreModule.forFeature(authFeatureKey, authReducer),
   ],
   exports: [],
   providers: [],
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {}

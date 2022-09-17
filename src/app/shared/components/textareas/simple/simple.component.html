@@ -1,0 +1,25 @@
+<div
+  class="relative border border-slate-300 rounded-md px-3 py-2.5 shadow-sm focus-within:ring-1 focus-within:ring-primary-600 focus-within:border-primary-600">
+  <label
+    for="description"
+    class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white -top-2 left-2 text-slate-700">
+    {{ label }}
+    <ng-template [ngIf]="required">
+      <span class="text-red-500">*</span>
+    </ng-template>
+  </label>
+  <textarea
+    matInput
+    rows="4"
+    [name]="name"
+    [id]="name"
+    [placeholder]="placeholder"
+    (input)="onChange($any($event.target).value)"
+    (blur)="onTouched()"
+    [ngClass]="class"
+    class="block w-full p-0 border-0 outline-none placeholder-slate-500 text-slate-700 focus:ring-0 sm:text-sm">
+  </textarea>
+</div>
+<ng-template [ngIf]="helpText">
+  <p class="mt-1 text-sm leading-5 text-slate-500">{{ helpText }}</p>
+</ng-template>

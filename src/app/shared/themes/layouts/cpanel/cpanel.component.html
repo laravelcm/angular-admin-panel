@@ -1,9 +1,35 @@
+<mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
 <div class="flex h-screen overflow-hidden">
-  <cosna-sidebar [menus]="menus"></cosna-sidebar>
-  <div class="flex flex-col flex-1 w-0 bg-white" style="box-shadow: -2px 1px 5px 0 rgba(0, 0, 0, 0.9);">
+  <!-- Static sidebar for mobile -->
+  <div class="relative z-40 md:hidden" [ngClass]="mobileSidebarOpen ? 'block' : 'hidden'">
+    <div [@openBackdrop]="openCloseTrigger" class="fixed inset-0 bg-opacity-75 bg-slate-900"></div>
+
+    <cosna-sidebar [@openClose]="openCloseTrigger" ngClass="fixed inset-0 z-40 flex"></cosna-sidebar>
+
+    <div [@closeButton]="openCloseTrigger" class="absolute top-0 z-50 pt-2 left-[285px]">
+      <button
+        type="button"
+        class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+        (click)="toggleSidebar()"
+      >
+        <span class="sr-only">Close sidebar</span>
+        <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Static sidebar for desktop -->
+  <cosna-sidebar ngClass="hidden md:block"></cosna-sidebar>
+
+  <!-- Content layout -->
+  <div class="flex flex-col flex-1 w-0 bg-white">
     <div class="relative z-0 flex flex-col h-full overflow-hidden overflow-y-auto focus:ouline-none">
-      <cosna-header></cosna-header>
-      <div class="flex flex-1 h-full px-6 lg:px-8">
+      <!-- Header -->
+      <cosna-header (openMobileSidebar)="openSidebar($event)"></cosna-header>
+
+      <div class="flex-1 w-full h-full px-4 mx-auto bg-slate-50 max-w-8xl md:bg-transparent sm:px-6 lg:px-8">
         <router-outlet></router-outlet>
       </div>
     </div>
