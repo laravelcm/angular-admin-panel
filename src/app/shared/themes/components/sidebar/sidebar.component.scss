@@ -1,3 +1,7 @@
+.sidebar {
+  box-shadow: inset -2px 1px 5px 0 rgba(0, 0, 0, 0.05);
+}
+
 .menu {
   @apply flex items-center px-6 py-2 text-sm font-medium border-l-4 border-transparent text-slate-600 hover:text-slate-900;
 

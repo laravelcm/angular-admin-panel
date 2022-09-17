@@ -2,36 +2,32 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'cosna-input-overlaping-label',
-  templateUrl: './overlaping-label.component.html',
+  selector: 'cosna-textarea-simple',
+  templateUrl: './simple.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => OverlapingLabelComponent),
+      useExisting: forwardRef(() => TextareaSimpleComponent),
       multi: true,
     },
   ],
 })
-export class OverlapingLabelComponent implements ControlValueAccessor {
+export class TextareaSimpleComponent implements ControlValueAccessor {
   value: string = '';
 
-  @Input() label!: string | null;
-
-  @Input() placeholder!: string | null;
+  @Input() label!: string;
 
   @Input() name!: string;
 
-  @Input() type: string = 'text';
+  @Input() placeholder: string = '';
 
-  @Input() required: boolean = false;
+  @Input() class!: string;
 
   @Input() disabled!: boolean;
 
-  @Input() containerClass!: string;
+  @Input() required!: boolean;
 
-  @Input() inputClass!: string;
-
-  @Input() helpText!: string | null;
+  @Input() helpText!: string;
 
   writeValue(value: string): void {
     if (value !== undefined) {

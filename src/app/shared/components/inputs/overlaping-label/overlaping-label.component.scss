@@ -1,9 +1,0 @@
-.cosna-group {
-  &.input-error {
-    @apply placeholder-red-300 border-red-300 text-red-500 focus-within:ring-red-600 focus-within:border-red-600;
-  }
-}
-
-.form-error {
-  @apply mt-2 text-sm text-red-600;
-}

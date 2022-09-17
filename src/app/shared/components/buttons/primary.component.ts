@@ -1,0 +1,42 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'cosna-button-primary',
+  template: `
+    <button
+      [type]="type"
+      [disabled]="loading$ | async"
+      class="relative inline-flex items-center font-mono px-4 py-2 text-sm font-medium uppercase tracking-[1.25px] text-white bg-primary-600 border border-transparent rounded-md shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition ease-in-out duration-150"
+      [ngClass]="class"
+      matRipple
+      matRippleColor="primary">
+      <span *ngIf="loading$ | async">
+        <svg
+          class="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
+          fill="none"
+          viewBox="0 0 24 24">
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4" />
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+        </svg>
+      </span>
+      <ng-content></ng-content>
+    </button>
+  `,
+})
+export class ButtonPrimaryComponent {
+  @Input() type: string = 'button';
+
+  @Input() loading$!: Observable<boolean>;
+
+  @Input() class!: string;
+}
