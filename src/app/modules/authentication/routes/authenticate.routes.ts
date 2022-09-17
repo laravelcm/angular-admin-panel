@@ -7,16 +7,16 @@ import { ForgotPasswordComponent } from '../pages/forgot-password/forgot-passwor
 import { LoginComponent } from '../pages/login/login.component';
 import { ResetPasswordComponent } from '../pages/reset-password/reset-password.component';
 
-export const authRoutes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+export const AUTH_ROUTES: Routes = [
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
   {
-    path: '', 
-    canActivateChild: [GuestGuard],
+    path: '',
+    canActivate: [GuestGuard],
     component: AuthComponent,
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'reset-password', component: ResetPasswordComponent },
-    ]
-  }
+    ],
+  },
 ];

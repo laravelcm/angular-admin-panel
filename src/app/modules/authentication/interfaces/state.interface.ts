@@ -1,9 +1,9 @@
 import { User } from '@app/modules/user/interfaces/user.interface';
+import { DefaultState } from '@app/shared/interfaces/state.interfaces';
 
-export interface AuthState {
+export interface AuthState extends DefaultState {
   isLoggedIn: boolean;
-  isLoading: boolean;
   user: User | null;
-  error: string | null;
-  message: string | null;
+  roles: string[];
+  permissions: string[];
 }
