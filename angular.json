@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cosna-cpanel": {
+    "admin-cpanel": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -18,12 +18,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "cosna",
+      "prefix": "admin",
       "architect": {
         "build": {
           "builder": "@ngx-env/builder:browser",
           "options": {
-            "outputPath": "dist/cosna-cpanel",
+            "outputPath": "dist/admin-cpanel",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -74,10 +74,10 @@
           "builder": "@ngx-env/builder:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cosna-cpanel:build:production"
+              "browserTarget": "admin-cpanel:build:production"
             },
             "development": {
-              "browserTarget": "cosna-cpanel:build:development"
+              "browserTarget": "admin-cpanel:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +85,7 @@
         "extract-i18n": {
           "builder": "@ngx-env/builder:extract-i18n",
           "options": {
-            "browserTarget": "cosna-cpanel:build"
+            "browserTarget": "admin-cpanel:build"
           }
         },
         "test": {
@@ -107,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "cosna-cpanel"
+  "defaultProject": "admin-cpanel"
 }
