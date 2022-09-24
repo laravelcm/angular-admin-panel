@@ -10,23 +10,23 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$cosna-admin-primary: mat.define-palette(mat.$green-palette);
-$cosna-admin-accent: mat.define-palette(mat.$orange-palette);
+$admin-primary: mat.define-palette(mat.$green-palette);
+$admin-accent: mat.define-palette(mat.$blue-palette);
 
 // The warn palette is optional (defaults to orange).
-$cosna-admin-warn: mat.define-palette(mat.$amber-palette);
+$admin-warn: mat.define-palette(mat.$amber-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$cosna-admin-theme: mat.define-light-theme((
+$admin-theme: mat.define-light-theme((
   color: (
-    primary: $cosna-admin-primary,
-    accent: $cosna-admin-accent,
-    warn: $cosna-admin-warn,
+    primary: $admin-primary,
+    accent: $admin-accent,
+    warn: $admin-warn,
   )
 ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($cosna-admin-theme);
+@include mat.all-component-themes($admin-theme);

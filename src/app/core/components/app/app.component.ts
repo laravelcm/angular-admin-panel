@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'cosna-root',
+  selector: 'admin-root',
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
-  title = 'Cosna Cpanel';
+  title = 'Admin Cpanel';
 }

@@ -1,35 +1,35 @@
 <div>
-  <cosna-logo-svg class="h-auto w-36"></cosna-logo-svg>
+  <logo-svg class="h-auto w-36"></logo-svg>
   <h2 class="mt-6 text-3xl font-semibold text-slate-900">Connectez-vous</h2>
   <p class="mt-2 text-sm text-slate-600">
-    Cpanel Cosna Afrique - Le transfert d'argent rendu facile.
+    Admin Panel - Administration de la votre plateforme.
   </p>
 </div>
 
 <!-- Session Status -->
-<cosna-success *ngIf="message$ | async; let message" [message]="message" class="mt-4"></cosna-success>
+<alert-success *ngIf="message$ | async; let message" [message]="message" class="mt-4"></alert-success>
 
 <!-- Validation Errors -->
-<cosna-errors *ngIf="error$ | async; let error" [message]="error" class="mt-4"></cosna-errors>
+<alert-errors *ngIf="error$ | async; let error" [message]="error" class="mt-4"></alert-errors>
 
 <form [formGroup]="form" (submit)="submit()" class="mt-10 space-y-6">
   <!-- Email Address -->
   <div>
-    <cosna-input-overlaping-label
+    <input-overlaping-label
       label="Adresse E-mail"
       name="email"
       formControlName="email"
-    ></cosna-input-overlaping-label>
+    ></input-overlaping-label>
   </div>
   
   <!-- Password -->
   <div>
-    <cosna-input-overlaping-label
+    <input-overlaping-label
       label="Mot de passe"
       name="password"
       [type]="'password'"
       formControlName="password"
-    ></cosna-input-overlaping-label>
+    ></input-overlaping-label>
   </div>
 
   <div class="flex items-center justify-between">
@@ -44,13 +44,13 @@
   </div>
 
   <div>
-    <cosna-button-primary type="submit" class="justify-center w-full group" [loading$]="(loading$)">
+    <button-primary type="submit" class="justify-center w-full group" [loading$]="(loading$)">
       <span *ngIf="(loading$ | async) !== null" class="absolute inset-y-0 left-0 flex items-center pl-3">
         <svg class="w-5 h-5 text-primary-500 group-hover:text-primary-400" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C7.51472 1 5.5 3.01472 5.5 5.5V9H5C3.89543 9 3 9.89543 3 11V17C3 18.1046 3.89543 19 5 19H15C16.1046 19 17 18.1046 17 17V11C17 9.89543 16.1046 9 15 9H14.5V5.5C14.5 3.01472 12.4853 1 10 1ZM13 9V5.5C13 3.84315 11.6569 2.5 10 2.5C8.34315 2.5 7 3.84315 7 5.5V9H13Z" />
         </svg>
       </span>
       Se connecter
-    </cosna-button-primary>
+    </button-primary>
   </div>
 </form>
