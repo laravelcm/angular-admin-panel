@@ -1,14 +1,12 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cosna-logo-svg',
+  selector: 'logo-svg',
   templateUrl: './logo.component.html',
 })
 export class LogoComponent {
-
-  @Input('class') 
+  @Input('class')
   class: string = '';
 
-  constructor() { }
-
+  constructor() {}
 }

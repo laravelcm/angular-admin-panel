@@ -24,7 +24,7 @@ import {
 import { logoutAction } from '@app/modules/authentication/store/auth.actions';
 
 @Component({
-  selector: 'cosna-header',
+  selector: 'admin-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   animations: [

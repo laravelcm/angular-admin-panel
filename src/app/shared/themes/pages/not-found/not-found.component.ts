@@ -25,7 +25,7 @@ export class NotFoundComponent implements OnInit {
       this.router.navigateByUrl('/auth/login');
     }
 
-    this.homeUrl = '/dashboard/t';
+    this.homeUrl = '/dashboard';
   }
 
   redirectToHome() {

@@ -2,7 +2,7 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'cosna-input-overlaping-label',
+  selector: 'input-overlaping-label',
   templateUrl: './overlaping-label.component.html',
   providers: [
     {

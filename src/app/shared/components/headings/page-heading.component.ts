@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cosna-page-heading',
+  selector: 'admin-page-heading',
   template: `
     <div class="py-5 md:flex md:items-center md:justify-between">
       <div class="flex-1 min-w-0">

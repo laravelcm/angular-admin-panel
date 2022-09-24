@@ -4,7 +4,7 @@
   <div class="relative z-40 md:hidden" [ngClass]="mobileSidebarOpen ? 'block' : 'hidden'">
     <div [@openBackdrop]="openCloseTrigger" class="fixed inset-0 bg-opacity-75 bg-slate-900"></div>
 
-    <cosna-sidebar [@openClose]="openCloseTrigger" ngClass="fixed inset-0 z-40 flex"></cosna-sidebar>
+    <admin-sidebar [@openClose]="openCloseTrigger" ngClass="fixed inset-0 z-40 flex"></admin-sidebar>
 
     <div [@closeButton]="openCloseTrigger" class="absolute top-0 z-50 pt-2 left-[285px]">
       <button
@@ -21,13 +21,13 @@
   </div>
 
   <!-- Static sidebar for desktop -->
-  <cosna-sidebar ngClass="hidden md:block"></cosna-sidebar>
+  <admin-sidebar ngClass="hidden md:block"></admin-sidebar>
 
   <!-- Content layout -->
   <div class="flex flex-col flex-1 w-0 bg-white">
     <div class="relative z-0 flex flex-col h-full overflow-hidden overflow-y-auto focus:ouline-none">
       <!-- Header -->
-      <cosna-header (openMobileSidebar)="openSidebar($event)"></cosna-header>
+      <admin-header (openMobileSidebar)="openSidebar($event)"></admin-header>
 
       <div class="flex-1 w-full h-full px-4 mx-auto bg-slate-50 max-w-8xl md:bg-transparent sm:px-6 lg:px-8">
         <router-outlet></router-outlet>

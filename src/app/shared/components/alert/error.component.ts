@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cosna-errors',
+  selector: 'alert-errors',
   template: `
     <div class="p-4 rounded-md bg-red-50" [ngClass]="class">
       <div class="flex">

@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'cosna-button-primary',
+  selector: 'button-primary',
   template: `
     <button
       [type]="type"
       [disabled]="loading$ | async"
-      class="relative inline-flex items-center font-mono px-4 py-2 text-sm font-medium uppercase tracking-[1.25px] text-white bg-primary-600 border border-transparent rounded-md shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition ease-in-out duration-150"
+      class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-600 border border-transparent rounded-md shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition ease-in-out duration-150"
       [ngClass]="class"
       matRipple
       matRippleColor="primary">

@@ -4,7 +4,7 @@ import { Menu } from '@app/shared/interfaces/menu';
 import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
-  selector: 'cosna-sidebar',
+  selector: 'admin-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })

@@ -10,7 +10,7 @@ import {
 import { LoadingService } from '../../services/loading.service';
 
 @Component({
-  selector: 'cosna-cpanel-layout',
+  selector: 'cpanel-layout',
   templateUrl: './cpanel.component.html',
   animations: [
     trigger('openClose', [

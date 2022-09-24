@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NgxSkeletonLoaderConfigTheme } from 'ngx-skeleton-loader';
 
 @Component({
-  selector: 'cosna-line-skeleton',
+  selector: 'loader-line-skeleton',
   template: `
     <div [class]="class">
       <ngx-skeleton-loader

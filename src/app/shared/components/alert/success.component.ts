@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'cosna-success',
+  selector: 'alert-success',
   template: `
     <div class="p-4 rounded-md bg-green-50" [ngClass]="class">
       <div class="flex">

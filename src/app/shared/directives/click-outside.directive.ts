@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[cosnaClickOutside]',
+  selector: '[ClickOutside]',
 })
 export class ClickOutsideDirective {
   constructor(private elementRef: ElementRef) {}

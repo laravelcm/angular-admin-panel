@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'cosna-user-profile-with-name-skeleton',
+  selector: 'loader-user-profile-with-name-skeleton',
   template: `
     <div class="flex items-center">
       <div class="w-10 h-10 shrink-0">
