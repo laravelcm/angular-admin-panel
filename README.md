@@ -7,7 +7,7 @@ This project use ANgular 13+
 
 Clone the repo locally:
 ```bash
-git clone https://gitlab.com/i2658/cosna-afrique/boilerplate/cpanel.angular.git cpanel.angular && cd cpanel.angular
+git clone https://github.com/laravelcm/angular-admin-panel.git cpanel.angular && cd cpanel.angular
 ```
 
 Install NPM dependencies:
