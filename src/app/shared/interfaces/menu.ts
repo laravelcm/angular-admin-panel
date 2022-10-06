@@ -8,4 +8,5 @@ export interface MenuItem {
   svgPath: string[];
   link: string;
   roles: string[];
+  soon?: boolean;
 }
