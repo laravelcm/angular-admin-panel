@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
     <button
       [type]="type"
       [disabled]="loading$ | async"
-      class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-600 border border-transparent rounded-md shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition ease-in-out duration-150"
-      [ngClass]="class"
+      class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition ease-in-out duration-150"
+      [ngClass]="class + this.themeClass()"
       matRipple
       matRippleColor="primary">
       <span *ngIf="loading$ | async">
@@ -39,4 +39,21 @@ export class ButtonPrimaryComponent {
   @Input() loading$!: Observable<boolean>;
 
   @Input() class!: string;
+
+  @Input() theme: string = 'primary';
+
+  public themeClass(theme: string): string {
+    switch (theme) {
+      case 'primary':
+        return 'bg-primary-600 hover:bg-primary-700 focus:ring-primary-500';
+      case 'secondary':
+        return 'bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500';
+      case 'success':
+        return 'bg-green-600 hover:bg-green-700 focus:ring-green-500';
+      case 'danger':
+        return 'bg-red-600 hover:bg-red-700 focus:ring-red-500';
+      default:
+        return 'bg-transparent hover:bg-slate-50 focus:ring-slate-900';
+    }
+  }
 }
