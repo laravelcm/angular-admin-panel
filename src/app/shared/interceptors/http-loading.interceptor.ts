@@ -20,10 +20,14 @@ export class HttpLoadingInterceptor implements HttpInterceptor {
     private localStorageService: LocalStorageService,
     public loadingService: LoadingService
   ) {
-    this.httpRequestCount$.subscribe(i => {
+    this.httpRequestCount$.subscribe((i: number) => {
       i === 0
-        ? this.loadingService.isLoading$.next(false)
-        : this.loadingService.isLoading$.next(true);
+        ? setTimeout(() => {
+            this.loadingService.isLoading$.next(false);
+          })
+        : setTimeout(() => {
+            this.loadingService.isLoading$.next(true);
+          });
     });
   }
 
