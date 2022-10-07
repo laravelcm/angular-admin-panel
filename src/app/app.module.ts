@@ -25,7 +25,7 @@ import { ROOT_REDUCERS } from './core/store/app.store';
 import { AuthInterceptor } from './modules/authentication/interceptors/auth.interceptor';
 import { HttpLoadingInterceptor } from './shared/interceptors/http-loading.interceptor';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
-import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { ErrorsInterceptor } from './shared/interceptors/errors.interceptor';
 
 registerLocaleData(localeFr);
 
@@ -72,7 +72,7 @@ registerLocaleData(localeFr);
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
+      useClass: ErrorsInterceptor,
       multi: true,
     },
     {

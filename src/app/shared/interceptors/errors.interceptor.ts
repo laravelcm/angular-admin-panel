@@ -4,15 +4,17 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
 import { Store } from '@ngrx/store';
+
 import { logoutAction } from '@app/modules/authentication/store/auth.actions';
+import { fetchFormsErrorAction } from '@app/core/store/session/session.actions';
 
 @Injectable()
-export class ErrorInterceptor implements HttpInterceptor {
+export class ErrorsInterceptor implements HttpInterceptor {
   constructor(private store: Store) {}
 
   intercept(
@@ -20,13 +22,19 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
-      catchError(err => {
-        if ([401, 403].indexOf(err.status) !== -1) {
+      catchError((response: HttpErrorResponse) => {
+        if ([401, 403].includes(response.status)) {
           this.store.dispatch(logoutAction());
         }
 
-        const error = err.error.message || err.statusText;
-        return throwError(error);
+        if ([422].includes(response.status)) {
+          this.store.dispatch(
+            fetchFormsErrorAction({ formErrors: response.error })
+          );
+        }
+
+        const error = response.error.message || response.statusText;
+        return of(error);
       })
     );
   }
