@@ -1,13 +1,13 @@
 <!-- Global Loader -->
 <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
-<div class="h-screen overflow-hidden bg-gray-100">
+<div class="h-screen overflow-hidden bg-gray-100 dark:bg-gray-900">
   <!-- Header -->
   <admin-header (openMobileSidebar)="openSidebar($event)"></admin-header>
 
   <div class="flex h-full min-h-screen">
     <!-- Static sidebar for mobile -->
     <div class="relative z-40 md:hidden" [ngClass]="mobileSidebarOpen ? 'block' : 'hidden'">
-      <div [@openBackdrop]="openCloseTrigger" class="fixed inset-0 bg-gray-900 bg-opacity-75"></div>
+      <div [@openBackdrop]="openCloseTrigger" class="fixed inset-0 bg-gray-900 bg-opacity-75 dark:bg-gray-700"></div>
   
       <admin-sidebar [@openClose]="openCloseTrigger" ngClass="fixed inset-0 z-40 flex"></admin-sidebar>
   
