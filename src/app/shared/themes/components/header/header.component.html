@@ -1,4 +1,4 @@
-<header class="bg-white border-b shadow shrink-0 md:bg-transparent md:shadow-none border-slate-100">
+<header class="bg-white border-b border-gray-200 shrink-0">
   <div class="flex">
     <button
       type="button"
@@ -10,16 +10,28 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
       </svg>
     </button>
-    <div class="flex items-center justify-between flex-1 px-4 sm:px-6 lg:px-8">
-      <logo-svg class="w-24 h-auto md:hidden"></logo-svg>
+    <div class="flex items-center justify-between flex-1 px-4 py-3 sm:px-6 lg:px-8">
+      <div class="flex items-center flex-1">
+        <logo-svg class="w-24 h-auto sm:w-28"></logo-svg>
 
-      <!-- SearchBar Component -->
-      <div class="max-w-lg md:py-5"></div>
+        <!-- SearchBar Component -->
+        <div class="w-full max-w-xs ml-12">
+          <label for="search" class="sr-only">Recherche rapide</label>
+          <div class="relative flex items-center">
+            <input type="text" name="search" id="search" placeholder="Rechercher" class="block w-full pr-12 border-gray-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm">
+            <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+              <kbd class="inline-flex items-center px-2 font-sans text-sm font-medium text-gray-400 border border-gray-200 rounded">⌘K</kbd>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="flex items-center py-4 lg:py-5 lg:divide-x lg:divide-slate-200">
+      <div class="flex items-center lg:divide-x lg:divide-slate-200">
         <a
-          href="#"
-          class="items-center hidden pr-4 text-sm leading-5 lg:flex text-slate-500 hover:text-slate-700">
+          href="https://github.com/laravelcm/angular-admin-panel"
+          target="_blank"
+          class="items-center hidden pr-4 text-sm leading-5 lg:flex text-slate-500 hover:text-slate-700"
+        >
           <svg
             class="w-6 h-6 mr-2 text-slate-400"
             stroke="currentColor"
@@ -75,7 +87,7 @@
               aria-expanded="false"
               aria-haspopup="true"
               (click)="toggleMobileMenu()">
-              <span class="sr-only">Open user menu</span>
+              <span class="sr-only">Ouvrir le menu utilisateur</span>
               <ngx-skeleton-loader
                 *ngIf="(user$ | async) === null"
                 appearance="circle"

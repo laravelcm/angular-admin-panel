@@ -1,36 +1,39 @@
+<!-- Global Loader -->
 <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
-<div class="flex h-screen overflow-hidden">
-  <!-- Static sidebar for mobile -->
-  <div class="relative z-40 md:hidden" [ngClass]="mobileSidebarOpen ? 'block' : 'hidden'">
-    <div [@openBackdrop]="openCloseTrigger" class="fixed inset-0 bg-opacity-75 bg-slate-900"></div>
+<div class="h-screen overflow-hidden bg-gray-100">
+  <!-- Header -->
+  <admin-header (openMobileSidebar)="openSidebar($event)"></admin-header>
 
-    <admin-sidebar [@openClose]="openCloseTrigger" ngClass="fixed inset-0 z-40 flex"></admin-sidebar>
-
-    <div [@closeButton]="openCloseTrigger" class="absolute top-0 z-50 pt-2 left-[285px]">
-      <button
-        type="button"
-        class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-        (click)="toggleSidebar()"
-      >
-        <span class="sr-only">Close sidebar</span>
-        <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+  <div class="flex h-full min-h-screen">
+    <!-- Static sidebar for mobile -->
+    <div class="relative z-40 md:hidden" [ngClass]="mobileSidebarOpen ? 'block' : 'hidden'">
+      <div [@openBackdrop]="openCloseTrigger" class="fixed inset-0 bg-gray-900 bg-opacity-75"></div>
+  
+      <admin-sidebar [@openClose]="openCloseTrigger" ngClass="fixed inset-0 z-40 flex"></admin-sidebar>
+  
+      <div [@closeButton]="openCloseTrigger" class="absolute top-0 z-50 pt-2 left-[285px]">
+        <button
+          type="button"
+          class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          (click)="toggleSidebar()"
+        >
+          <span class="sr-only">Fermer la sidebar</span>
+          <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
     </div>
-  </div>
-
-  <!-- Static sidebar for desktop -->
-  <admin-sidebar ngClass="hidden md:block"></admin-sidebar>
-
-  <!-- Content layout -->
-  <div class="flex flex-col flex-1 w-0 bg-white">
-    <div class="relative z-0 flex flex-col h-full overflow-hidden overflow-y-auto focus:ouline-none">
-      <!-- Header -->
-      <admin-header (openMobileSidebar)="openSidebar($event)"></admin-header>
-
-      <div class="flex-1 w-full h-full px-4 mx-auto bg-slate-50 max-w-8xl md:bg-transparent sm:px-6 lg:px-8">
-        <router-outlet></router-outlet>
+  
+    <!-- Static sidebar for desktop -->
+    <admin-sidebar ngClass="hidden md:block"></admin-sidebar>
+  
+    <!-- Content layout -->
+    <div class="flex flex-col flex-1 w-0">
+      <div class="relative z-0 flex flex-col h-full overflow-hidden overflow-y-auto focus:ouline-none">
+        <div class="flex-1 w-full h-full px-4 py-6 mx-auto max-w-8xl sm:px-6 lg:px-8">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
   </div>
