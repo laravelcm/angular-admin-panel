@@ -1,11 +1,11 @@
-<aside id="sidebar" class="relative group flex flex-col h-full w-[260px] bg-slate-50">
-  <div class="flex flex-col flex-grow overflow-y-auto">
-    <div class="relative flex items-center px-6 py-8 shrink-0 sm:px-8">
+<aside id="sidebar" class="relative flex flex-col h-full w-[260px] bg-gray-100 lg:bg-transparent dark:bg-gray-800">
+  <div class="flex flex-col flex-grow py-6 overflow-y-auto">
+    <div class="relative flex items-center px-6 py-8 shrink-0 sm:hidden">
       <logo-svg class="h-auto w-36"></logo-svg>
     </div>
     <nav class="flex flex-col h-full pt-4 pb-8 space-y-8" aria-label="Sidebar">
       <div *ngFor="let menu of menus">
-        <h5 class="px-6 font-mono text-xs font-semibold leading-5 tracking-widest uppercase text-slate-400 sm:px-8">{{ menu.group }}</h5>
+        <h5 class="px-6 font-mono text-xs font-semibold leading-5 tracking-widest uppercase text-slate-400 sm:px-8 dark:text-slate-300">{{ menu.group }}</h5>
         <div class="mt-3 space-y-1">
           <ng-template *ngFor="let item of menu.items" [ngxPermissionsOnly]="item.roles">
             <a [routerLink]="item.link" routerLinkActive="menu-current" class="menu group">
@@ -13,6 +13,7 @@
                 <path *ngFor="let path of item.svgPath" [attr.d]="path" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
               <span class="truncate">{{ item.title }}</span>
+              <span *ngIf="item.soon" class="ml-2.5 inline-flex items-center text-xs leading-4 text-primary-800 bg-primary-100 px-1.5 py-0.5">Bientôt</span>
             </a>
           </ng-template>
         </div>

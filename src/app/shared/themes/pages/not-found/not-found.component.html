@@ -1,16 +1,16 @@
-<div class="flex flex-col min-h-full pt-16 pb-12 bg-white">
+<div class="flex flex-col min-h-full pt-16 pb-12 bg-white dark:bg-gray-900">
   <main class="flex flex-col justify-center flex-grow w-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="flex justify-center flex-shrink-0">
       <div class="inline-flex">
         <span class="sr-only">Administration</span>
-        <logo-svg class="w-auto h-20"></logo-svg>
+        <logo-svg class="w-auto h-20 text-slate-900 dark:text-white"></logo-svg>
       </div>
     </div>
     <div class="py-16">
       <div class="text-center">
-        <p class="text-base font-semibold text-primary-600">404</p>
-        <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Page introuvable.</h1>
-        <p class="mt-2 text-base text-slate-500">Désolé, nous n'avons pas trouvé la page que vous recherchez.</p>
+        <p class="text-xl font-semibold text-primary-600 sm:text-2xl">404</p>
+        <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">Page introuvable.</h1>
+        <p class="mt-2 text-base text-slate-500 dark:text-slate-400">Désolé, nous n'avons pas trouvé la page que vous recherchez.</p>
         <div class="mt-6">
           <a *ngIf="isLoggedIn" (click)="redirectToHome()" class="text-base font-medium cursor-pointer text-primary-600 hover:text-primary-500 hover:underline">
             Retourner à l'accueil
@@ -22,13 +22,13 @@
   </main>
   <footer class="flex-shrink-0 w-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <nav class="flex justify-center space-x-4">
-      <a href="mailto:monneylobe@gmail.com" class="text-sm font-medium text-slate-500 hover:text-slate-600">Contact Support</a>
-      <span class="inline-block border-l border-slate-300" aria-hidden="true"></span>
-      <a href="#" class="text-sm font-medium text-slate-500 hover:text-slate-600">Status</a>
-      <span class="inline-block border-l border-slate-300" aria-hidden="true"></span>
-      <a href="https://twitter.com/cosna_afrique" class="text-sm font-medium text-slate-500 hover:text-slate-600">Twitter</a>
-      <span class="inline-block border-l border-slate-300" aria-hidden="true"></span>
-      <a href="https://www.facebook.com/CosnaAfrique" class="text-sm font-medium text-slate-500 hover:text-slate-600">Facebook</a>
+      <a href="mailto:monneylobe@gmail.com" class="text-sm font-medium text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-white">Contact Support</a>
+      <span class="inline-block border-l border-slate-300 dark:border-slate-700" aria-hidden="true"></span>
+      <a href="#" class="text-sm font-medium text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-white">Status</a>
+      <span class="inline-block border-l border-slate-300 dark:border-slate-700" aria-hidden="true"></span>
+      <a href="https://twitter.com/laravelcm" class="text-sm font-medium text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-white">Twitter</a>
+      <span class="inline-block border-l border-slate-300 dark:border-slate-700" aria-hidden="true"></span>
+      <a href="https://facebook.com/laravelcm" class="text-sm font-medium text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-white">Facebook</a>
     </nav>
   </footer>
 </div>

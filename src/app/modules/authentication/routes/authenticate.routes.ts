@@ -8,7 +8,7 @@ import { LoginComponent } from '../pages/login/login.component';
 import { ResetPasswordComponent } from '../pages/reset-password/reset-password.component';
 
 export const AUTH_ROUTES: Routes = [
-  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   {
     path: '',
     canActivate: [GuestGuard],

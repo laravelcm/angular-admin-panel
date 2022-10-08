@@ -1,5 +1,5 @@
-<div class="relative border border-slate-300 rounded-md px-3 py-2.5 shadow-sm focus-within:ring-1 focus-within:ring-primary-600 focus-within:border-primary-600 cosna-group" [ngClass]="containerClass">
-  <label [for]="name" class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white -top-2 left-2 text-slate-700">
+<div class="relative border border-slate-300 rounded-md px-3 py-2.5 shadow-sm focus-within:ring-1 focus-within:ring-primary-600 focus-within:border-primary-600 dark:border-slate-700 dark:bg-gray-800" [ngClass]="containerClass">
+  <label [for]="name" class="absolute z-20 inline-block px-1 -mt-px text-xs font-medium bg-white -top-2 left-2 text-slate-700 dark:text-slate-300 dark:bg-transparent">
     {{ label }}
     <ng-template [ngIf]="required">
       <span class="text-red-500">*</span>
@@ -15,9 +15,9 @@
     (blur)="onTouched()"
     [placeholder]="placeholder ? placeholder : ''"
     [ngClass]="inputClass"
-    class="block w-full p-0 border-0 outline-none placeholder-slate-500 text-slate-700 focus:ring-0 sm:text-sm"
+    class="block w-full p-0 bg-white border-0 outline-none placeholder-slate-500 text-slate-700 focus:ring-0 sm:text-sm dark:text-white dark:placeholder-400 dark:bg-gray-800"
   />
 </div>
 <ng-template [ngIf]="helpText">
-  <p class="mt-1 text-sm leading-5 text-slate-500">{{ helpText }}</p>
+  <p class="mt-1 text-sm leading-5 text-slate-500 dark:text-slate-400">{{ helpText }}</p>
 </ng-template>
