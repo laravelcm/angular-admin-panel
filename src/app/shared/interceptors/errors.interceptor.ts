@@ -23,7 +23,7 @@ export class ErrorsInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((response: HttpErrorResponse) => {
-        if ([401, 403].includes(response.status)) {
+        if ([403].includes(response.status)) {
           this.store.dispatch(logoutAction());
         }
 
