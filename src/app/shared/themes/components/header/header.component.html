@@ -2,7 +2,7 @@
   <div class="flex">
     <button
       type="button"
-      class="px-4 border-r text-slate-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 md:hidden"
+      class="px-4 border-r text-slate-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 md:hidden dark:border-slate-700"
       (click)="openSidebar()"
     >
       <span class="sr-only">Open sidebar</span>
@@ -15,7 +15,7 @@
         <logo-svg class="w-24 h-auto text-slate-900 sm:w-28 dark:text-white"></logo-svg>
 
         <!-- SearchBar Component -->
-        <div class="w-full max-w-xs ml-12">
+        <div class="hidden w-full max-w-xs ml-12 md:block">
           <label for="search" class="sr-only">Recherche rapide</label>
           <div class="relative flex items-center">
             <input type="text" name="search" id="search" placeholder="Rechercher" class="block w-full pr-12 bg-white border-gray-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm dark:bg-gray-900 dark:border-gray-700 dark:text-white">
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="flex items-center lg:divide-x lg:divide-slate-200 dark:lg:divide-slate-700">
+      <div class="flex items-center lg:divide-x lg:divide-slate-200 lg:dark:divide-slate-700">
         <a
           href="https://github.com/laravelcm/angular-admin-panel"
           target="_blank"
@@ -47,6 +47,7 @@
           Vous rencontrez un problème ?
         </a>
         <div class="flex items-center pl-4">
+          <!-- SearchBar Button -->
           <button
             type="button"
             class="inline-flex items-center p-1 text-sm leading-5 rounded-full hover:bg-gray-50 text-slate-500 hover:text-slate-900 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-white focus:outline-none md:hidden">
@@ -63,6 +64,7 @@
                 d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
           </button>
+          <!-- Notification Icon -->
           <button
             type="button"
             class="inline-flex items-center p-1 ml-3 text-sm leading-5 rounded-full hover:bg-gray-50 text-slate-500 hover:text-slate-900 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-white focus:outline-none md:ml-0">
@@ -79,6 +81,77 @@
                 d="M9.354 21c.705.622 1.632 1 2.646 1s1.94-.378 2.646-1M18 8A6 6 0 1 0 6 8c0 3.09-.78 5.206-1.65 6.605-.735 1.18-1.102 1.771-1.089 1.936.015.182.054.252.2.36.133.099.732.099 1.928.099H18.61c1.196 0 1.795 0 1.927-.098.147-.11.186-.179.2-.361.014-.165-.353-.755-1.088-1.936C18.78 13.206 18 11.09 18 8Z" />
             </svg>
           </button>
+          <!-- Theme Switcher -->
+          <div class="relative ml-3">
+            <label class="sr-only" id="label-system">Theme</label>
+            <button (click)="showDialog =! showDialog" type="button" class="flex items-center justify-center w-8 h-8 rounded-full shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5">
+              <span class="sr-only">{{ currentTheme }}</span>
+              <svg class="hidden h-4 w-4 fill-green-400 [[data-theme=light]_&]:block" aria-hidden="true" viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M7 1a1 1 0 0 1 2 0v1a1 1 0 1 1-2 0V1Zm4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm2.657-5.657a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm-1.415 11.313-.707-.707a1 1 0 0 1 1.415-1.415l.707.708a1 1 0 0 1-1.415 1.414ZM16 7.999a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2h1a1 1 0 0 0 1-1ZM7 14a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm-2.536-2.464a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm0-8.486A1 1 0 0 1 3.05 4.464l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM3 8a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Z"
+                />
+              </svg>
+              <svg class="hidden h-4 w-4 fill-slate-400 [:not(.dark)[data-theme=system]_&]:block" aria-hidden="true" viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M7 1a1 1 0 0 1 2 0v1a1 1 0 1 1-2 0V1Zm4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm2.657-5.657a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm-1.415 11.313-.707-.707a1 1 0 0 1 1.415-1.415l.707.708a1 1 0 0 1-1.415 1.414ZM16 7.999a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2h1a1 1 0 0 0 1-1ZM7 14a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm-2.536-2.464a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm0-8.486A1 1 0 0 1 3.05 4.464l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM3 8a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Z"
+                />
+              </svg>
+              <svg class="hidden h-4 w-4 fill-green-400 [[data-theme=dark]_&]:block" aria-hidden="true" viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M7.23 3.333C7.757 2.905 7.68 2 7 2a6 6 0 1 0 0 12c.68 0 .758-.905.23-1.332A5.989 5.989 0 0 1 5 8c0-1.885.87-3.568 2.23-4.668ZM12 5a1 1 0 0 1 1 1 1 1 0 0 0 1 1 1 1 0 1 1 0 2 1 1 0 0 0-1 1 1 1 0 1 1-2 0 1 1 0 0 0-1-1 1 1 0 1 1 0-2 1 1 0 0 0 1-1 1 1 0 0 1 1-1Z"
+                />
+              </svg>
+              <svg class="hidden h-4 w-4 fill-slate-400 [.dark[data-theme=system]_&]:block" aria-hidden="true" viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M7.23 3.333C7.757 2.905 7.68 2 7 2a6 6 0 1 0 0 12c.68 0 .758-.905.23-1.332A5.989 5.989 0 0 1 5 8c0-1.885.87-3.568 2.23-4.668ZM12 5a1 1 0 0 1 1 1 1 1 0 0 0 1 1 1 1 0 1 1 0 2 1 1 0 0 0-1 1 1 1 0 1 1-2 0 1 1 0 0 0-1-1 1 1 0 1 1 0-2 1 1 0 0 0 1-1 1 1 0 0 1 1-1Z"
+                />
+              </svg>
+            </button>
+            <ul 
+              *ngIf="showDialog" 
+              class="absolute z-50 p-3 mt-3 space-y-1 text-sm font-medium -translate-x-1/2 bg-white shadow-md top-full left-1/2 w-36 rounded-xl shadow-black/5 ring-1 ring-black/5 dark:bg-slate-800 dark:ring-white/5"
+              aria-labelledby="tailwind-list-label"
+              aria-orientation="vertical"
+              id="tailwind-listbox-options"
+              role="listbox"
+            >
+              <li *ngFor="let theme of themes" class="flex cursor-pointer select-none items-center rounded-[0.625rem] p-1 hover:bg-slate-100 dark:hover:bg-slate-900/40">
+                <button (click)="updateTheme(theme.value)" class="p-1 bg-white rounded-md shadow ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5">
+                  <svg class="w-4 h-4" [ngClass]="theme.value === currentTheme ? 'fill-green-400 dark:fill-green-400': 'fill-slate-400'" aria-hidden="true" viewBox="0 0 16 16">
+                    <path
+                      *ngIf="theme.value === 'light'"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M7 1a1 1 0 0 1 2 0v1a1 1 0 1 1-2 0V1Zm4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm2.657-5.657a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm-1.415 11.313-.707-.707a1 1 0 0 1 1.415-1.415l.707.708a1 1 0 0 1-1.415 1.414ZM16 7.999a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2h1a1 1 0 0 0 1-1ZM7 14a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm-2.536-2.464a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm0-8.486A1 1 0 0 1 3.05 4.464l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM3 8a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Z"
+                    />
+                    <path
+                      *ngIf="theme.value === 'dark'"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M7.23 3.333C7.757 2.905 7.68 2 7 2a6 6 0 1 0 0 12c.68 0 .758-.905.23-1.332A5.989 5.989 0 0 1 5 8c0-1.885.87-3.568 2.23-4.668ZM12 5a1 1 0 0 1 1 1 1 1 0 0 0 1 1 1 1 0 1 1 0 2 1 1 0 0 0-1 1 1 1 0 1 1-2 0 1 1 0 0 0-1-1 1 1 0 1 1 0-2 1 1 0 0 0 1-1 1 1 0 0 1 1-1Z"
+                    />
+                    <path
+                      *ngIf="theme.value === 'system'"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M1 4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3h-1.5l.31 1.242c.084.333.36.573.63.808.091.08.182.158.264.24A1 1 0 0 1 11 15H5a1 1 0 0 1-.704-1.71c.082-.082.173-.16.264-.24.27-.235.546-.475.63-.808L5.5 11H4a3 3 0 0 1-3-3V4Zm3-1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z"
+                    />
+                  </svg>
+                </button>
+                <div [ngClass]="theme.value === currentTheme ? 'text-green-500': 'text-slate-700 dark:text-slate-400'" class="ml-3">{{ theme.name }}</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Profile Dropdown Menu -->
           <div class="relative ml-3" #menuDropdown>
             <button
               type="button"
@@ -102,7 +175,7 @@
             </button>
             <div
               [@openClose]="openCloseTrigger"
-              class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg divide-slate-100 ring-1 ring-black dark:bg-gray-800 dark:divide-slate-700 dark:ring-gray-800 ring-opacity-5 focus:outline-none"
+              class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg divide-slate-100 ring-1 ring-black dark:bg-gray-800 dark:divide-slate-700 dark:ring-gray-800 ring-opacity-5 dark:ring-opacity-70 focus:outline-none"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="menu-button"

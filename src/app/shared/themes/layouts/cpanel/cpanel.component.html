@@ -7,7 +7,7 @@
   <div class="flex h-full min-h-screen">
     <!-- Static sidebar for mobile -->
     <div class="relative z-40 md:hidden" [ngClass]="mobileSidebarOpen ? 'block' : 'hidden'">
-      <div [@openBackdrop]="openCloseTrigger" class="fixed inset-0 bg-gray-900 bg-opacity-75 dark:bg-gray-700"></div>
+      <div [@openBackdrop]="openCloseTrigger" class="fixed inset-0 bg-gray-900 bg-opacity-75 dark:bg-gray-700 dark:bg-opacity-80"></div>
   
       <admin-sidebar [@openClose]="openCloseTrigger" ngClass="fixed inset-0 z-40 flex"></admin-sidebar>
   

@@ -5,6 +5,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -36,8 +37,18 @@ import { logoutAction } from '@app/modules/authentication/store/auth.actions';
     ]),
   ],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   mobileMenuOpen!: boolean;
+
+  currentTheme!: string;
+
+  showDialog: boolean = false;
+
+  themes = [
+    { name: 'Light', value: 'light' },
+    { name: 'Dark', value: 'dark' },
+    { name: 'System', value: 'system' },
+  ];
 
   @ViewChild('menuDropdown') menuDropdown!: ElementRef;
 
@@ -57,6 +68,7 @@ export class HeaderComponent {
   }
 
   toggleMobileMenu(): void {
+    this.showDialog = false;
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
@@ -75,4 +87,26 @@ export class HeaderComponent {
   }
 
   constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    const selectedTheme = window.localStorage.getItem('theme');
+
+    if (selectedTheme) {
+      document.documentElement.setAttribute('data-theme', selectedTheme)
+    } else {
+      const theme = this.themes.find(
+        (theme) =>
+          theme.value === document.documentElement.getAttribute('data-theme')
+      );
+      window.localStorage.setItem('theme', theme!.value);
+    }
+
+    this.currentTheme = window.localStorage.getItem('theme')!;
+  }
+
+  updateTheme(theme: string) {
+    document.documentElement.setAttribute('data-theme', theme);
+    window.localStorage.setItem('theme', theme);
+    this.currentTheme = theme;
+  }
 }
