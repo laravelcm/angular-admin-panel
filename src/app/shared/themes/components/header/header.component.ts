@@ -59,12 +59,12 @@ export class HeaderComponent implements OnInit {
 
   public loading$: Observable<boolean> = this.store.select(selectLoading);
 
-  public logout() {
-    this.store.dispatch(logoutAction());
-  }
-
   get openCloseTrigger() {
     return this.mobileMenuOpen ? 'open' : 'closed';
+  }
+
+  logout(): void {
+    this.store.dispatch(logoutAction());
   }
 
   toggleMobileMenu(): void {
@@ -104,9 +104,11 @@ export class HeaderComponent implements OnInit {
     this.currentTheme = window.localStorage.getItem('theme')!;
   }
 
-  updateTheme(theme: string) {
+  updateTheme(theme: string): void {
     document.documentElement.setAttribute('data-theme', theme);
     window.localStorage.setItem('theme', theme);
+    
     this.currentTheme = theme;
+    this.showDialog = false;
   }
 }
