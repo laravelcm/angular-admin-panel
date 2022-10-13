@@ -16,7 +16,7 @@
 
         <!-- SearchBar Component -->
         <div class="hidden w-full max-w-xs ml-12 md:block">
-          <label for="search" class="sr-only">Recherche rapide</label>
+          <label for="search" class="sr-only" i18n>Recherche rapide</label>
           <div class="relative flex items-center">
             <input type="text" name="search" id="search" placeholder="Rechercher" class="block w-full pr-12 bg-white border-gray-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm dark:bg-gray-900 dark:border-gray-700 dark:text-white">
             <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
@@ -44,7 +44,7 @@
             <path
               d="M2.5 12h3.382c.685 0 1.312.387 1.618 1 .306.613.933 1 1.618 1h5.764c.685 0 1.312-.387 1.618-1 .306-.613.933-1 1.618-1H21.5M8.967 4h6.066c1.077 0 1.616 0 2.091.164a3 3 0 0 1 1.121.693c.36.352.6.833 1.082 1.796l2.166 4.333c.19.378.284.567.35.765.06.177.102.357.128.541.029.207.029.418.029.841V15.2c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C19.72 20 18.88 20 17.2 20H6.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C2 17.72 2 16.88 2 15.2v-2.067c0-.422 0-.634.029-.84.026-.184.068-.365.128-.541.066-.199.16-.388.35-.766l2.166-4.333c.482-.963.723-1.444 1.082-1.796a3 3 0 0 1 1.12-.693C7.352 4 7.89 4 8.968 4Z" />
           </svg>
-          Vous rencontrez un problème ?
+          <span i18n>Vous rencontrez un problème ?</span>
         </a>
         <div class="flex items-center pl-4">
           <!-- SearchBar Button -->
@@ -83,7 +83,7 @@
           </button>
           <!-- Theme Switcher -->
           <div class="relative ml-3">
-            <label class="sr-only" id="label-system">Theme</label>
+            <label class="sr-only" id="label-system" i18n>Theme</label>
             <button (click)="showDialog =! showDialog" type="button" class="flex items-center justify-center w-8 h-8 rounded-full shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5">
               <span class="sr-only">{{ currentTheme }}</span>
               <svg class="hidden h-4 w-4 fill-green-400 [[data-theme=light]_&]:block" aria-hidden="true" viewBox="0 0 16 16">
@@ -160,7 +160,7 @@
               aria-expanded="false"
               aria-haspopup="true"
               (click)="toggleMobileMenu()">
-              <span class="sr-only">Ouvrir le menu utilisateur</span>
+              <span class="sr-only" i18n>Ouvrir le menu utilisateur</span>
               <ngx-skeleton-loader
                 *ngIf="(user$ | async) === null"
                 appearance="circle"
@@ -175,14 +175,14 @@
             </button>
             <div
               [@openClose]="openCloseTrigger"
-              class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg divide-slate-100 ring-1 ring-black dark:bg-gray-800 dark:divide-slate-700 dark:ring-gray-800 ring-opacity-5 dark:ring-opacity-70 focus:outline-none"
+              class="absolute right-0 z-10 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg w-60 divide-slate-100 ring-1 ring-black dark:bg-gray-800 dark:divide-slate-700 dark:ring-gray-800 ring-opacity-5 focus:outline-none"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="menu-button"
               tabindex="-1"
               [ngClass]="mobileMenuOpen ? 'block' : 'hidden'">
               <div class="px-4 py-3" role="none">
-                <p class="text-sm text-black dark:text-slate-500" role="none">Connecté avec</p>
+                <p class="text-sm text-black dark:text-slate-500" role="none" i18n>Connecté avec</p>
                 <p
                   class="text-sm font-medium truncate text-slate-900 dark:text-white"
                   role="none"
@@ -191,18 +191,18 @@
                 </p>
               </div>
               <div class="py-1" role="none">
-                <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">
+                <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="menu-item-0" i18n>
                   Mon compte
                 </a>
-                <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+                <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="menu-item-1" i18n>
                   Support
                 </a>
-                <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">
+                <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white dark:hover:bg-gray-700" role="menuitem" tabindex="-1" id="menu-item-2" i18n>
                   Guide d'utilisation
                 </a>
               </div>
               <div class="flex items-center justify-between py-1" role="none">
-                <button type="button" (click)="logout()" class="block w-full px-4 py-2 text-sm text-left text-slate-700 dark:text-slate-300" role="menuitem" tabindex="-1" id="menu-item-3">
+                <button type="button" (click)="logout()" class="block w-full px-4 py-2 text-sm text-left text-slate-700 dark:text-slate-300" role="menuitem" tabindex="-1" id="menu-item-3" i18n>
                   Se déconnecter
                 </button>
                 <span *ngIf="loading$ | async" class="flex items-center px-3">

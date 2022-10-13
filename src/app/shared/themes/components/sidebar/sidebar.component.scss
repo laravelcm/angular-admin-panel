@@ -3,8 +3,11 @@
   @apply flex items-center px-6 py-2 text-sm font-medium border-l-4 border-transparent;
   
   &-current {
-    @apply border-primary-600 hover:text-primary-600;
+    @apply border-primary-600;
     color: theme('colors.primary.600') !important;
+    &:hover {
+      color: theme('colors.primary.600') !important;
+    }
   
     svg {
       @apply group-hover:text-primary-600;
