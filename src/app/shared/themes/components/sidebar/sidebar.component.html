@@ -13,7 +13,7 @@
                 <path *ngFor="let path of item.svgPath" [attr.d]="path" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
               <span class="truncate">{{ item.title }}</span>
-              <span *ngIf="item.soon" class="ml-2.5 inline-flex items-center text-xs leading-4 text-primary-800 bg-primary-100 px-1.5 py-0.5">Bientôt</span>
+              <span *ngIf="item.soon" class="ml-2.5 inline-flex items-center text-xs leading-4 text-primary-800 bg-primary-100 px-1.5 py-0.5" i18n>Bientôt</span>
             </a>
           </ng-template>
         </div>

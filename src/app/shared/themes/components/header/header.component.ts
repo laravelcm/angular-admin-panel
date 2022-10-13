@@ -45,9 +45,9 @@ export class HeaderComponent implements OnInit {
   showDialog: boolean = false;
 
   themes = [
-    { name: 'Light', value: 'light' },
-    { name: 'Dark', value: 'dark' },
-    { name: 'System', value: 'system' },
+    { name: $localize`Clair`, value: 'light' },
+    { name: $localize`Sombre`, value: 'dark' },
+    { name: $localize`Système`, value: 'system' },
   ];
 
   @ViewChild('menuDropdown') menuDropdown!: ElementRef;
