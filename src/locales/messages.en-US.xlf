@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="4390770950707898456" datatype="html">
         <source>Mot de passe oublié?</source>
-        <target>Forgot Password?</target>
+        <target>Forgot password?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/authentication/pages/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">3,4</context>
@@ -24,7 +24,7 @@
       </trans-unit>
       <trans-unit id="1768337911781584581" datatype="html">
         <source> Envoyer le lien de réinitialisation </source>
-        <target> Send reset link </target>
+        <target> Email Password Reset Link </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/authentication/pages/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">26,27</context>
@@ -364,6 +364,98 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
           <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3131862248575056929" datatype="html">
+        <source>Adresse E-mail</source>
+        <target>E-mail Address</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <note priority="1" from="description">attr-email</note>
+      </trans-unit>
+      <trans-unit id="5249891717669571568" datatype="html">
+        <source>Mot de passe</source>
+        <target>Password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="description">attr-password</note>
+      </trans-unit>
+      <trans-unit id="3143758897900443465" datatype="html">
+        <source>Nouveau Mot de passe</source>
+        <target>New password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="description">attr-new-password</note>
+      </trans-unit>
+      <trans-unit id="2551997964969349678" datatype="html">
+        <source>Confirmer Mot de passe</source>
+        <target>Confirm password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+        <note priority="1" from="description">attr-confirm-password</note>
+      </trans-unit>
+      <trans-unit id="7844706011418789951" datatype="html">
+        <source>Administration</source>
+        <target>Administration</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4200089939196324140" datatype="html">
+        <source>Page introuvable.</source>
+        <target>Page Not Found.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8045887825111278978" datatype="html">
+        <source>Désolé, nous n&apos;avons pas trouvé la page que vous recherchez.</source>
+        <target>Sorry, we did not find the page you were looking for.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="37427966907131214" datatype="html">
+        <source> Retourner à l&apos;accueil <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span aria-hidden=&quot;true&quot;&gt;"/> →<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <target> Return to Homepage <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span aria-hidden=&quot;true&quot;&gt;"/> →<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7205753262217313784" datatype="html">
+        <source>Contactez le Support</source>
+        <target>Contact Support</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5611592591303869712" datatype="html">
+        <source>Status</source>
+        <target>Status</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
     </body>

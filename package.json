@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:en": "ng serve --configuration=en",
+    "start:en": "ng serve --configuration=en -- --port 4201",
     "extract": "ng extract-i18n --output-path src/locales",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
