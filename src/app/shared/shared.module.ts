@@ -2,10 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 
 import { ThemeModule } from './themes/theme.module';
 
@@ -62,25 +58,12 @@ const DECLARATIONS = [
   StatusValuePipe,
 ];
 
-const MODULES = [
-  CommonModule,
-  ThemeModule,
-  MatFormFieldModule,
-  MatDatepickerModule,
-];
+const MODULES = [CommonModule, ThemeModule];
 
 @NgModule({
   declarations: DECLARATIONS,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ...MODULES,
-  ],
-  providers: [MatDatepickerModule, MatNativeDateModule],
+  imports: [FormsModule, ReactiveFormsModule, ...MODULES],
+  providers: [],
   exports: [...DECLARATIONS, ...MODULES, NgxPermissionsModule],
 })
 export class SharedModule {}
