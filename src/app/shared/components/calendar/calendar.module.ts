@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [CalendarComponent],
+  imports: [CommonModule],
+  exports: [CalendarComponent],
 })
-export class CalendarModule { }
+export class CalendarModule {}

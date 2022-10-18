@@ -1,0 +1,22 @@
+<ng-template #monthviewDefaultDisplayEventTemplate let-view="view" let-row="row" let-col="col">
+  {{ view.dates[row * 7 + col].label }}
+</ng-template>
+<ng-template 
+  #monthviewDefaultEventDetailTemplate 
+  let-showEventDetail="showEventDetail"
+  let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+  <div class="event-detail-container" has-bouncing="false" *ngIf="showEventDetail" overflow-scroll="false">
+    <div class="event-detail-item" *ngFor="let event of selectedDate?.events" (click)="eventSelected(event)">
+      <span *ngIf="!event.allDay" class="monthview-eventdetail-timecolumn">
+        {{event.startTime | date: 'HH:mm'}}
+          -
+        {{event.endTime | date: 'HH:mm'}}
+      </span>
+      <span *ngIf="event.allDay" class="monthview-eventdetail-timecolumn">{{ allDayLabel }}</span>
+      <span class="event-detail">  |  {{ event.title }}</span>
+    </div>
+    <div class="event-detail-item" *ngIf="selectedDate?.events.length === 0">
+      <div class="no-events-label">{{ noEventsLabel }}</div>
+    </div>
+  </div>
+</ng-template>
