@@ -93,6 +93,10 @@ export class CalendarComponent implements OnInit, OnDestroy {
   @Input() locale = '';
   @Input() startHour = 0;
   @Input() endHour = 24;
+  @Input() styleClass!: string;
+  @Input('monthStyle') monthClass!: string;
+  @Input('weekStyle') weekClass!: string;
+  @Input('dayStyle') dayClass!: string;
 
   @Output() onCurrentDateChanged = new EventEmitter<Date>();
   @Output() onRangeChanged = new EventEmitter<IRange>();
@@ -105,11 +109,18 @@ export class CalendarComponent implements OnInit, OnDestroy {
   private hourSegments = 1;
   private currentDateChangedFromChildrenSubscription!: Subscription | null;
 
+  monthStyle!: string;
+  weekStyle!: string;
+  dayStyle!: string;
+
   constructor(
     private calendarService: CalendarService,
     @Inject(LOCALE_ID) private appLocale: string
   ) {
     this.locale = appLocale;
+    this.monthStyle = this.monthClass;
+    this.weekStyle = this.weekClass;
+    this.dayStyle = this.dayClass;
   }
 
   ngOnInit() {

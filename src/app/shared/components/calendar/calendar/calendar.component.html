@@ -1,8 +1,18 @@
-<ng-template #monthViewDefaultDisplayEventTemplate let-view="view" let-row="row" let-col="col">
-  {{ view.dates[row * 7 + col].label }}
+<ng-template #monthViewDefaultDisplayEventTemplate let-view="view">
+  <time [attr.datetime]="view.date" 
+        [ngClass]="{ 'flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 font-semibold text-white' : view.current }"
+  >{{ view.label }}</time>
+  <ol class="mt-2" *ngIf="view.events.length > 0">
+    <li *ngFor="let event of view.events">
+      <a href="#" class="flex group">
+        <p class="flex-auto font-medium truncate text-slate-900 dark:text-white/75 group-hover:text-primary-600">{{ event.title }}</p>
+        <time [attr.datetime]="event.startTime" class="flex-none hidden ml-3 text-slate-500 group-hover:text-primary-600 xl:block">{{ event.startTime }}</time>
+      </a>
+    </li>
+  </ol>
 </ng-template>
-<ng-template 
-  #monthViewDefaultEventDetailTemplate 
+<ng-template
+  #monthViewDefaultEventDetailTemplate
   let-showEventDetail="showEventDetail"
   let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
   <div class="event-detail-container" has-bouncing="false" *ngIf="showEventDetail" overflow-scroll="false">
@@ -41,19 +51,37 @@
       </div>
   </div>
 </ng-template>
-<ng-template #defaultNormalEventSectionTemplate let-tm="tm" let-hourParts="hourParts"
-              let-eventTemplate="eventTemplate">
-    <div [ngClass]="{'calendar-event-wrap': tm.events}" *ngIf="tm.events">
-        <div *ngFor="let displayEvent of tm.events" class="calendar-event" tappable
-              (click)="eventSelected(displayEvent.event)"
-              [ngStyle]="{top: (37*displayEvent.startOffset/hourParts)+'px',left: 100/displayEvent.overlapNumber*displayEvent.position+'%', width: 100/displayEvent.overlapNumber+'%', height: 37*(displayEvent.endIndex -displayEvent.startIndex - (displayEvent.endOffset + displayEvent.startOffset)/hourParts)+'px'}">
-            <ng-template [ngTemplateOutlet]="eventTemplate"
-                          [ngTemplateOutletContext]="{displayEvent:displayEvent}">
-            </ng-template>
-        </div>
+<ng-template #defaultNormalEventSectionTemplate let-tm="tm" let-hourParts="hourParts" let-eventTemplate="eventTemplate">
+  <div [ngClass]="{'calendar-event-wrap': tm.events}" *ngIf="tm.events">
+    <div *ngFor="let displayEvent of tm.events" class="calendar-event" tappable
+        (click)="eventSelected(displayEvent.event)"
+        [ngStyle]="{top: (37*displayEvent.startOffset/hourParts)+'px',left: 100/displayEvent.overlapNumber*displayEvent.position+'%', width: 100/displayEvent.overlapNumber+'%', height: 37*(displayEvent.endIndex -displayEvent.startIndex - (displayEvent.endOffset + displayEvent.startOffset)/hourParts)+'px'}">
+        <ng-template [ngTemplateOutlet]="eventTemplate" 
+                      [ngTemplateOutletContext]="{displayEvent:displayEvent}">
+        </ng-template>
     </div>
+  </div>
 </ng-template>
 
-<div [ngSwitch]="calendarMode" class="{{ calendarMode }}view-container">
-  Le calendrier ici
+<div [ngSwitch]="calendarMode" class="{{ calendarMode }}-view">
+  <month-view *ngSwitchCase="'month'"
+    [formatDay]="formatDay"
+    [formatDayHeader]="formatDayHeader"
+    [formatMonthTitle]="formatMonthTitle"
+    [startingDayMonth]="startingDayMonth"
+    [showEventDetail]="showEventDetail"
+    [noEventsLabel]="noEventsLabel"
+    [autoSelect]="autoSelect"
+    [eventSource]="eventSource"
+    [markDisabled]="markDisabled"
+    [monthViewDisplayEventTemplate]="monthViewDisplayEventTemplate || monthViewDefaultDisplayEventTemplate"
+    [monthViewEventDetailTemplate]="monthViewEventDetailTemplate|| monthViewDefaultEventDetailTemplate"
+    [locale]="locale"
+    [dateFormatter]="dateFormatter"
+    [monthClass]="monthClass"
+    (onRangeChanged)="rangeChanged($event)"
+    (onEventSelected)="eventSelected($event)"
+    (onTimeSelected)="timeSelected($event)"
+    (onTitleChanged)="titleChanged($event)">
+  </month-view>
 </div>

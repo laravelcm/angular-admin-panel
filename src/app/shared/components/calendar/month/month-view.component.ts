@@ -36,7 +36,9 @@ export class MonthViewComponent
   @Input()
   monthViewInactiveDisplayEventTemplate!: TemplateRef<IMonthViewDisplayEventTemplateContext>;
   @Input()
-  monthViewEventDetailTemplate!: TemplateRef<IMonthViewDisplayEventTemplateContext>;
+  monthViewEventDetailTemplate!:
+    | TemplateRef<IMonthViewDisplayEventTemplateContext>
+    | any;
 
   @Input() formatDay!: string;
   @Input() formatDayHeader!: string;
@@ -50,6 +52,7 @@ export class MonthViewComponent
   @Input() locale!: string;
   @Input() dateFormatter!: IDateFormatter;
   @Input() spaceBetween!: number;
+  @Input() monthClass!: string;
 
   @Output() onRangeChanged = new EventEmitter<IRange>();
   @Output() onEventSelected = new EventEmitter<IEvent>();
@@ -82,6 +85,7 @@ export class MonthViewComponent
       dates[i++] = new Date(current.getTime());
       current.setDate(current.getDate() + 1);
     }
+
     return dates;
   }
 
@@ -117,12 +121,9 @@ export class MonthViewComponent
     this.inited = true;
 
     this.currentDateChangedFromParentSubscription =
-      this.calendarService.currentDateChangedFromParent$.subscribe(
-        currentDate => {
-          this.refreshView();
-        }
-      );
-
+      this.calendarService.currentDateChangedFromParent$.subscribe(() => {
+        this.refreshView();
+      });
     this.eventSourceChangedSubscription =
       this.calendarService.eventSourceChanged$.subscribe(() => {
         this.onDataLoaded();
@@ -191,11 +192,11 @@ export class MonthViewComponent
   }
 
   getViewData(startTime: Date): IMonthView {
-    const startDate = startTime,
-      date = startDate.getDate(),
-      month = (startDate.getMonth() + (date !== 1 ? 1 : 0)) % 12,
-      dates = MonthViewComponent.getDates(startDate, 42),
-      days: IMonthViewRow[] = [];
+    const startDate = startTime;
+    const date = startDate.getDate();
+    const month = (startDate.getMonth() + (date !== 1 ? 1 : 0)) % 12;
+    const dates = MonthViewComponent.getDates(startDate, 42);
+    const days: IMonthViewRow[] = [];
 
     for (let i = 0; i < 42; i++) {
       const dateObject = this.createDateObject(dates[i]);
@@ -207,6 +208,7 @@ export class MonthViewComponent
     for (let i = 0; i < 7; i++) {
       dayHeaders.push(this.formatDayHeaderLabel(days[i].date));
     }
+
     return {
       dates: days,
       dayHeaders: dayHeaders,
@@ -218,9 +220,9 @@ export class MonthViewComponent
 
     if (date.hasEvent) {
       if (date.secondary) {
-        className = 'monthview-secondary-with-event';
+        className = 'secondary-with-event';
       } else {
-        className = 'monthview-primary-with-event';
+        className = 'primary-with-event';
       }
     }
 
@@ -228,40 +230,48 @@ export class MonthViewComponent
       if (className) {
         className += ' ';
       }
-      className += 'monthview-selected';
+      className += 'selected';
     }
 
     if (date.current) {
       if (className) {
         className += ' ';
       }
-      className += 'monthview-current';
+      className += 'current';
     }
 
     if (date.secondary) {
       if (className) {
         className += ' ';
       }
-      className += 'text-muted';
+      className +=
+        'bg-gray-50 text-slate-500 dark:text-slate-400 dark:bg-gray-700';
+    } else {
+      if (className) {
+        className += ' ';
+      }
+      className +=
+        'bg-white text-slate-700 dark:bg-gray-800 dark:text-slate-300';
     }
 
     if (date.disabled) {
       if (className) {
         className += ' ';
       }
-      className += 'monthview-disabled';
+      className += 'disabled cursor-disabled bg-gray-100 dark:bg-gray-600';
     }
+
     return className;
   }
 
   getRange(currentDate: Date): IRange {
-    const year = currentDate.getFullYear(),
-      month = currentDate.getMonth(),
-      firstDayOfMonth = new Date(year, month, 1),
-      difference = this.startingDayMonth - firstDayOfMonth.getDay(),
-      numDisplayedFromPreviousMonth =
-        difference > 0 ? 7 - difference : -difference,
-      startDate = new Date(firstDayOfMonth.getTime());
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const firstDayOfMonth = new Date(year, month, 1);
+    const difference = this.startingDayMonth - firstDayOfMonth.getDay();
+    const numDisplayedFromPreviousMonth =
+      difference > 0 ? 7 - difference : -difference;
+    const startDate = new Date(firstDayOfMonth.getTime());
 
     if (numDisplayedFromPreviousMonth > 0) {
       startDate.setDate(-numDisplayedFromPreviousMonth + 1);
@@ -414,13 +424,13 @@ export class MonthViewComponent
   }
 
   getTitle(): string {
-    const currentViewStartDate = this.range.startTime,
-      date = currentViewStartDate.getDate(),
-      month = (currentViewStartDate.getMonth() + (date !== 1 ? 1 : 0)) % 12,
-      year =
-        currentViewStartDate.getFullYear() +
-        (date !== 1 && month === 0 ? 1 : 0),
-      headerDate = new Date(year, month, 1, 12, 0, 0, 0);
+    const currentViewStartDate = this.range.startTime;
+    const date = currentViewStartDate.getDate();
+    const month = (currentViewStartDate.getMonth() + (date !== 1 ? 1 : 0)) % 12;
+    const year =
+      currentViewStartDate.getFullYear() + (date !== 1 && month === 0 ? 1 : 0);
+    const headerDate = new Date(year, month, 1, 12, 0, 0, 0);
+
     return this.formatTitle(headerDate);
   }
 
@@ -439,16 +449,16 @@ export class MonthViewComponent
       return;
     }
 
-    const selectedDate = viewDate.date,
-      events = viewDate.events;
+    const selectedDate = viewDate.date;
+    const events = viewDate.events;
 
     if (!viewDate.disabled) {
-      const dates = this.view.dates,
-        currentCalendarDate = this.calendarService.currentDate,
-        currentMonth = currentCalendarDate.getMonth(),
-        currentYear = currentCalendarDate.getFullYear(),
-        selectedMonth = selectedDate.getMonth(),
-        selectedYear = selectedDate.getFullYear();
+      const dates = this.view.dates;
+      const currentCalendarDate = this.calendarService.currentDate;
+      const currentMonth = currentCalendarDate.getMonth();
+      const currentYear = currentCalendarDate.getFullYear();
+      const selectedMonth = selectedDate.getMonth();
+      const selectedYear = selectedDate.getFullYear();
       let direction = 0;
 
       if (currentYear === selectedYear) {
@@ -461,16 +471,16 @@ export class MonthViewComponent
 
       this.calendarService.setCurrentDate(selectedDate);
       if (direction === 0) {
-        const currentViewStartDate = this.range.startTime,
-          oneDay = 86400000,
-          selectedDayDifference = Math.floor(
-            (selectedDate.getTime() -
-              currentViewStartDate.getTime() -
-              (selectedDate.getTimezoneOffset() -
-                currentViewStartDate.getTimezoneOffset()) *
-                60000) /
-              oneDay
-          );
+        const currentViewStartDate = this.range.startTime;
+        const oneDay = 86400000;
+        const selectedDayDifference = Math.floor(
+          (selectedDate.getTime() -
+            currentViewStartDate.getTime() -
+            (selectedDate.getTimezoneOffset() -
+              currentViewStartDate.getTimezoneOffset()) *
+              60000) /
+            oneDay
+        );
 
         for (let r = 0; r < 42; r += 1) {
           dates[r].selected = false;

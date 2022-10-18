@@ -3,7 +3,6 @@ import { Observable, Subject } from 'rxjs';
 
 import {
   ICalendarComponent,
-  IView,
   CalendarMode,
   QueryMode,
 } from './interfaces';

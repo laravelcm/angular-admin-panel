@@ -98,8 +98,6 @@ export interface ITimeSelected {
 
 export interface IMonthViewDisplayEventTemplateContext {
   view: IView;
-  row: number;
-  col: number;
 }
 
 export interface IMonthViewEventDetailTemplateContext {
