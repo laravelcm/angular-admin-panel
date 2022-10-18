@@ -1,3 +1,8 @@
+/**
+ * This pagination Object is the default structure of
+ * Laravel Eloquent Pagination Response
+ * @see https://laravel.com/docs/eloquent/pagination
+ */
 export const pagination = {
   total: 0,
   per_page: 0,
@@ -14,34 +19,34 @@ export const pagination = {
 export const status = {
   pending: {
     label: 'PENDING',
-    locale: 'En attente',
+    locale: $localize`En attente`,
   },
   success: {
     label: 'SUCCESS',
-    locale: 'Réussi',
+    locale: $localize`Réussi`,
   },
   failed: {
     label: 'FAILED',
-    locale: 'Échoué',
+    locale: $localize`Échoué`,
   },
   rejected: {
     label: 'REJECTED',
-    locale: 'Rejeté',
+    locale: $localize`Rejeté`,
   },
   canceled: {
     label: 'CANCELED',
-    locale: 'Annulé',
+    locale: $localize`Annulé`,
   },
   completed: {
     label: 'COMPLETED',
-    locale: 'Terminé',
+    locale: $localize`Terminé`,
   },
   refunded: {
     label: 'REFUNDED',
-    locale: 'Remboursé',
+    locale: $localize`Remboursé`,
   },
   processing: {
     label: 'PROCESSING',
-    locale: 'En cours',
+    locale: $localize`En cours`,
   },
-}
+};

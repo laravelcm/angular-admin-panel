@@ -33,8 +33,6 @@ import { Observable } from 'rxjs';
 })
 export class ButtonDefaultComponent {
   @Input() type: string = 'button';
-
   @Input() loading$!: Observable<boolean>;
-
   @Input() class!: string;
 }

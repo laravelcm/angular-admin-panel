@@ -27,6 +27,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SuccessComponent {
   @Input() class!: string;
-
   @Input() message!: string;
 }

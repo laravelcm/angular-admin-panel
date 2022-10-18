@@ -27,7 +27,6 @@ import { logoutAction } from '@app/modules/authentication/store/auth.actions';
 @Component({
   selector: 'admin-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
   animations: [
     trigger('openClose', [
       state('open', style({ opacity: 1, transform: 'scale(1, 1)' })),
@@ -39,12 +38,9 @@ import { logoutAction } from '@app/modules/authentication/store/auth.actions';
 })
 export class HeaderComponent implements OnInit {
   mobileMenuOpen!: boolean;
-
   currentTheme!: string;
-
   showDialog: boolean = false;
-
-  themes = [
+  themes: { name: string; value: string }[] = [
     { name: $localize`Clair`, value: 'light' },
     { name: $localize`Sombre`, value: 'dark' },
     { name: $localize`Système`, value: 'system' },
@@ -56,8 +52,25 @@ export class HeaderComponent implements OnInit {
     new EventEmitter<boolean>();
 
   public user$: Observable<User | null> = this.store.select(selectCurrentUser);
-
   public loading$: Observable<boolean> = this.store.select(selectLoading);
+
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    const selectedTheme = window.localStorage.getItem('theme');
+
+    if (selectedTheme) {
+      document.documentElement.setAttribute('data-theme', selectedTheme);
+    } else {
+      const theme = this.themes.find(
+        theme =>
+          theme.value === document.documentElement.getAttribute('data-theme')
+      );
+      window.localStorage.setItem('theme', theme!.value);
+    }
+
+    this.currentTheme = window.localStorage.getItem('theme')!;
+  }
 
   get openCloseTrigger() {
     return this.mobileMenuOpen ? 'open' : 'closed';
@@ -86,28 +99,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  constructor(private store: Store) {}
-
-  ngOnInit(): void {
-    const selectedTheme = window.localStorage.getItem('theme');
-
-    if (selectedTheme) {
-      document.documentElement.setAttribute('data-theme', selectedTheme)
-    } else {
-      const theme = this.themes.find(
-        (theme) =>
-          theme.value === document.documentElement.getAttribute('data-theme')
-      );
-      window.localStorage.setItem('theme', theme!.value);
-    }
-
-    this.currentTheme = window.localStorage.getItem('theme')!;
-  }
-
   updateTheme(theme: string): void {
     document.documentElement.setAttribute('data-theme', theme);
     window.localStorage.setItem('theme', theme);
-    
+
     this.currentTheme = theme;
     this.showDialog = false;
   }
