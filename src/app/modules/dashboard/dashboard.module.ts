@@ -7,14 +7,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { dashboardRoutes } from './routes/dashboard.routes';
 
 @NgModule({
-  declarations: [
-    DashboardComponent
-  ],
-  imports: [
-    SharedModule,
-    RouterModule.forChild(dashboardRoutes),
-  ],
-  exports: [],
-  providers: [],
+  declarations: [DashboardComponent],
+  imports: [SharedModule, RouterModule.forChild(dashboardRoutes)],
 })
-export class DashboardModule { }
+export class DashboardModule {}

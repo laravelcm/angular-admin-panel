@@ -27,7 +27,5 @@ import { AuthEffects } from './store/auth.effects';
     SharedModule,
     StoreModule.forFeature(authFeatureKey, authReducer),
   ],
-  exports: [],
-  providers: [],
 })
 export class AuthenticationModule {}

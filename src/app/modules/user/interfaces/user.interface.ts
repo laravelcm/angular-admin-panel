@@ -20,7 +20,7 @@ export interface AuthResponse {
 
 export interface FromDate {
   date: Date;
-  timezone_type: number;
+  timezoneType: number;
   timezone: string;
 }
 
