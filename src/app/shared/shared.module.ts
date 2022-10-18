@@ -9,6 +9,7 @@ import { HeadingModule } from './components/headings/heading.module';
 import { SkeletonModule } from './components/skeletons/skeleton.module';
 import { SnippetModule } from './components/snippets/snippet.module';
 import { TextareaModule } from './components/textarea/textarea.module';
+import { CalendarModule } from './components/calendar/calendar.module';
 
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { StatusColorPipe } from './pipes/status-color.pipe';
@@ -17,13 +18,14 @@ import { StatusValuePipe } from './pipes/status-value.pipe';
 const DECLARATIONS = [ClickOutsideDirective, StatusColorPipe, StatusValuePipe];
 const MODULES = [
   AlertModule,
-  ThemeModule,
   ButtonModule,
-  InputsModule,
+  CalendarModule,
   HeadingModule,
+  InputsModule,
   SkeletonModule,
   SnippetModule,
   TextareaModule,
+  ThemeModule,
 ];
 
 @NgModule({

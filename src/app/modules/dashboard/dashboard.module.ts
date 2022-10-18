@@ -8,6 +8,6 @@ import { dashboardRoutes } from './routes/dashboard.routes';
 
 @NgModule({
   declarations: [DashboardComponent],
-  imports: [SharedModule, RouterModule.forChild(dashboardRoutes)],
+  imports: [RouterModule.forChild(dashboardRoutes), SharedModule],
 })
 export class DashboardModule {}
