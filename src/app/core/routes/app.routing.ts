@@ -18,5 +18,10 @@ export const ROUTES: Routes = [
         m => m.DashboardModule
       ),
   },
+  {
+    path: 'components',
+    loadChildren: () =>
+      import('@modules/design/design.module').then(m => m.DesignModule),
+  },
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
