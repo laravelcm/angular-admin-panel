@@ -161,7 +161,7 @@
               aria-haspopup="true"
               (click)="toggleMobileMenu()">
               <span class="sr-only" i18n>Ouvrir le menu utilisateur</span>
-              <ngx-skeleton-loader
+              <!-- <ngx-skeleton-loader
                 *ngIf="(user$ | async) === null"
                 appearance="circle"
                 [theme]="{
@@ -170,7 +170,7 @@
                   width: '32px',
                   margin: 0
                 }">
-              </ngx-skeleton-loader>
+              </ngx-skeleton-loader> -->
               <img *ngIf="user$ | async; let user" class="w-8 h-8 rounded-full" [src]="user.profilePhotoUrl" [alt]="user.name" />
             </button>
             <div

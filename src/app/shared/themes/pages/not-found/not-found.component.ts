@@ -8,7 +8,6 @@ import { LocalStorageService } from '@app/modules/authentication/services/local-
 })
 export class NotFoundComponent implements OnInit {
   homeUrl!: string;
-
   isLoggedIn: boolean = false;
 
   constructor(
