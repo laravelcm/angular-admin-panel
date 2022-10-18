@@ -6,6 +6,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRippleModule } from '@angular/material/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
+import { SkeletonModule } from '../components/skeletons/skeleton.module';
+
 import { AuthComponent } from './layouts/auth/auth.component';
 import { CpanelComponent } from './layouts/cpanel/cpanel.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -19,6 +21,7 @@ const MODULES = [
   MatProgressBarModule,
   MatSlideToggleModule,
   MatRippleModule,
+  SkeletonModule,
 ];
 
 @NgModule({
