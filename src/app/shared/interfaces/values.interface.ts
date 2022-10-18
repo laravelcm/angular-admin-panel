@@ -1,19 +1,20 @@
 /**
  * This pagination Object is the default structure of
- * Laravel Eloquent Pagination Response
- * @see https://laravel.com/docs/eloquent/pagination
+ * a Custom Laravel Eloquent Pagination Response
+ *
+ * @see https://laravel.com/docs/eloquent-resources#pagination
  */
 export const pagination = {
   total: 0,
-  per_page: 0,
-  current_page: 0,
-  next_page: null,
-  prev_page: null,
-  first_page: null,
-  last_page: null,
+  perPage: 0,
+  currentPage: 0,
+  nextPage: null,
+  prevPage: null,
+  firstPage: null,
+  lastPage: null,
   from: 0,
   to: 0,
-  total_pages: 0,
+  totalPages: 0,
 };
 
 export const status = {
