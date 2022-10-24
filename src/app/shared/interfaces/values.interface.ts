@@ -1,10 +1,12 @@
+import { Pagination } from './response.interface';
+
 /**
  * This pagination Object is the default structure of
  * a Custom Laravel Eloquent Pagination Response
  *
  * @see https://laravel.com/docs/eloquent-resources#pagination
  */
-export const pagination = {
+export const pagination: Pagination = {
   total: 0,
   perPage: 0,
   currentPage: 0,

@@ -10,13 +10,13 @@ export type IFilterParams = {
 
 export interface Pagination {
   total: number;
-  per_page: number;
-  current_page: number;
-  next_page: string | null;
-  prev_page: string | null;
-  first_page: string | null;
-  last_page: string | null;
+  perPage: number;
+  currentPage: number;
+  nextPage: string | null;
+  prevPage: string | null;
+  firstPage: string | null;
+  lastPage: string | null;
   from: number;
   to: number;
-  total_pages: number;
+  totalPages: number;
 }

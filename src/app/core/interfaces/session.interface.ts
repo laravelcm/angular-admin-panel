@@ -1,3 +1,7 @@
+export interface SessionState {
+  formErrors: IValidationError | null;
+}
+
 export type IValidationError = {
   message: string;
   errors: {
