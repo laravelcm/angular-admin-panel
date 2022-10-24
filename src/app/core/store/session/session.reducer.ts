@@ -1,11 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { IValidationError } from '@app/core/interfaces/session.interface';
+import { SessionState } from '@app/core/interfaces/session.interface';
 import * as SessionActions from './session.actions';
-
-export interface SessionState {
-  formErrors: IValidationError | null;
-}
 
 export const sessionFeatureKey = 'session';
 

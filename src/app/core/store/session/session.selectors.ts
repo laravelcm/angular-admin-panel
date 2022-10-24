@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { sessionFeatureKey, SessionState } from './session.reducer';
+import { SessionState } from '@app/core/interfaces/session.interface';
+import { sessionFeatureKey } from './session.reducer';
 
 export const sessionFeatureSelector =
   createFeatureSelector<SessionState>(sessionFeatureKey);

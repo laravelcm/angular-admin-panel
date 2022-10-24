@@ -1,7 +1,8 @@
 import { routerReducer, RouterState } from '@ngrx/router-store';
 import { Action, ActionReducerMap } from '@ngrx/store';
 
-import { sessionFeatureKey, sessionReducer, SessionState } from './session/session.reducer';
+import { SessionState } from '../interfaces/session.interface';
+import { sessionFeatureKey, sessionReducer } from './session/session.reducer';
 
 export interface AppState {
   router: RouterState;
