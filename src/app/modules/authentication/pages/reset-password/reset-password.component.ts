@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 
+import { PasswordRules } from '@app/shared/rules/password.rules';
 import {
   selectError,
   selectLoading,
@@ -10,7 +11,6 @@ import {
   selectResetPasswordToken,
 } from '../../store/auth.selectors';
 import { resetPasswordAction } from '../../store/auth.actions';
-import { PasswordRules } from '../../rules/password.rules';
 
 @Component({
   templateUrl: './reset-password.component.html',
@@ -29,11 +29,8 @@ export class ResetPasswordComponent {
   );
 
   public error$: Observable<string | null> = this.store.select(selectError);
-
   public message$: Observable<string | null> = this.store.select(selectMessage);
-
   public loading$: Observable<boolean> = this.store.select(selectLoading);
-
   public token$: Observable<string | null> = this.store.select(
     selectResetPasswordToken
   );
