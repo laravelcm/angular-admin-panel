@@ -34,6 +34,8 @@ export class MonthViewComponent
   @Input()
   monthViewDisplayEventTemplate!: TemplateRef<IMonthViewDisplayEventTemplateContext>;
   @Input()
+  monthViewDisplayResponsiveEventTemplate!: TemplateRef<IMonthViewDisplayEventTemplateContext>;
+  @Input()
   monthViewInactiveDisplayEventTemplate!: TemplateRef<IMonthViewDisplayEventTemplateContext>;
   @Input()
   monthViewEventDetailTemplate!:

@@ -75,6 +75,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
   @Input()
   monthViewDisplayEventTemplate!: TemplateRef<IMonthViewDisplayEventTemplateContext>;
   @Input()
+  monthViewDisplayResponsiveEventTemplate!: TemplateRef<IMonthViewDisplayEventTemplateContext>;
+  @Input()
   monthViewEventDetailTemplate!: TemplateRef<IMonthViewEventDetailTemplateContext>;
   @Input() weekViewHeaderTemplate!: TemplateRef<IDisplayWeekViewHeader>;
   @Input() weekViewAllDayEventTemplate!: TemplateRef<IDisplayAllDayEvent>;

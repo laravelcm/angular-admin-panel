@@ -11,6 +11,21 @@
     </li>
   </ol>
 </ng-template>
+<ng-template #monthViewDefaultDisplayResponsiveEventTemplate let-view="view">
+  <time [attr.datetime]="view.date" 
+        [ngClass]="{ 'flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 font-semibold text-white' : view.current }"
+        class="ml-auto"
+  >{{ view.label }}</time>
+  <span *ngIf="view.events.length === 0" class="sr-only">0 évènement</span>
+  <ng-template [ngIf]="view.events.length > 0">
+    <span class="sr-only">{{ view.events.length }} évènements</span>
+    <span class="-mx-0.5 mt-auto flex flex-wrap-reverse">
+      <span *ngFor="let event of view.events" 
+            class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400 dark:bg-gray-300"
+      ></span>
+    </span>
+  </ng-template>
+</ng-template>
 <ng-template
   #monthViewDefaultEventDetailTemplate
   let-showEventDetail="showEventDetail"
@@ -75,6 +90,7 @@
     [eventSource]="eventSource"
     [markDisabled]="markDisabled"
     [monthViewDisplayEventTemplate]="monthViewDisplayEventTemplate || monthViewDefaultDisplayEventTemplate"
+    [monthViewDisplayResponsiveEventTemplate]="monthViewDisplayResponsiveEventTemplate || monthViewDefaultDisplayResponsiveEventTemplate"
     [monthViewEventDetailTemplate]="monthViewEventDetailTemplate|| monthViewDefaultEventDetailTemplate"
     [locale]="locale"
     [dateFormatter]="dateFormatter"
