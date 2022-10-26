@@ -8,6 +8,8 @@ export class DashboardComponent implements OnInit {
 
   isOpen: boolean = false;
 
+  errors = ['dfghjkl fghjkl', 'dfghjk fghjk', 'sdfghjkl;'];
+
   constructor(private title: Title) { }
 
   ngOnInit(): void {
