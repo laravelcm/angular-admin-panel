@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'network-status',
   template: `
     <div
-      *ngIf="networkStatus"
+      *ngIf="showNetworkStatus"
       @showHideNotification
       aria-live="assertive"
       class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:p-6">
@@ -71,6 +71,6 @@ export class NetworkStatusComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.showNetworkStatus = false;
-    }, 100);
+    }, 3000);
   }
 }
