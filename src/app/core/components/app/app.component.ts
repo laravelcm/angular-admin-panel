@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.offlineEvent.subscribe(() => {
         this.connectionStatus = 'offline';
-        this.connectionStatusMessage = $localize`Connexion perdue ! Vous n'êtes pas connecté à l'Internet`;
+        this.connectionStatusMessage = $localize`Vous n'êtes pas connecté à l'Internet`;
       })
     );
   }
