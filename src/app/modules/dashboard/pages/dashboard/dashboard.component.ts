@@ -1,21 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
 @Component({
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
-
+export class DashboardComponent {
   isOpen: boolean = false;
 
-  errors = ['dfghjkl fghjkl', 'dfghjk fghjk', 'sdfghjkl;'];
-
-  constructor(private title: Title) { }
-
-  ngOnInit(): void {
-  }
-
   toggle(value: boolean) {
-    this.isOpen = value
+    this.isOpen = value;
   }
 }

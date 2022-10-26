@@ -170,5 +170,4 @@
   </section>
 </div>
 
-<alert-errors [errors]="errors" [isOpen]="isOpen" (toggleShowAlert)="toggle($event)" message="Connecté avec succes!"></alert-errors>
-<alert-success [isOpen]="isOpen" (toggleShowAlert)="toggle($event)" message="Connecté avec succes!"></alert-success>
+<simple-notification [isOpen]="isOpen" (toggleShowNotification)="toggle($event)" type="warning" title="Connexion" message="Connecté avec succes!"></simple-notification>
