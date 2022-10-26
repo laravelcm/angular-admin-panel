@@ -1,17 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-
-import { SeoService } from '@app/shared/services/seo.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'admin-root',
-  template: '<router-outlet></router-outlet>',
+  template: `
+    <router-outlet></router-outlet>
+    <network-status
+      [networkStatus]="connectionStatus"
+      [networkStatusMessage]="connectionStatusMessage"></network-status>
+  `,
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  onlineEvent!: Observable<Event>;
+  offlineEvent!: Observable<Event>;
+  subscriptions: Subscription[] = [];
 
-  public constructor(private seoService: SeoService) {}
+  connectionStatusMessage!: string;
+  connectionStatus!: string;
 
   ngOnInit(): void {
+    this.networkStatus();
     document.documentElement.setAttribute('data-theme', this.updateTheme());
 
     new MutationObserver(([{ oldValue }]) => {
@@ -26,6 +35,25 @@ export class AppComponent implements OnInit {
       attributeFilter: ['data-theme'],
       attributeOldValue: true,
     });
+  }
+
+  networkStatus(): void {
+    this.onlineEvent = fromEvent(window, 'online');
+    this.offlineEvent = fromEvent(window, 'offline');
+
+    this.subscriptions.push(
+      this.onlineEvent.subscribe(() => {
+        this.connectionStatus = 'online';
+        this.connectionStatusMessage = $localize`Vous êtes de nouveau en ligne.`;
+      })
+    );
+
+    this.subscriptions.push(
+      this.offlineEvent.subscribe(() => {
+        this.connectionStatus = 'offline';
+        this.connectionStatusMessage = $localize`Connexion perdue ! Vous n'êtes pas connecté à l'Internet`;
+      })
+    );
   }
 
   updateTheme(savedTheme: string | null = null): string {
@@ -58,5 +86,9 @@ export class AppComponent implements OnInit {
     window.setTimeout(() => {
       document.documentElement.classList.remove('[&_*]:!transition-none');
     }, 0);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }
