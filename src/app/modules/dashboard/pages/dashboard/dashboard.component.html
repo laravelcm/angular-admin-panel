@@ -1,4 +1,4 @@
-<div class="pt-5 pb-16">
+<div class="pt-5 pb-16" (click)="isOpen = !isOpen">
   <!-- Welcome panel -->
   <section aria-labelledby="profile-overview-title">
   </section>
@@ -161,3 +161,5 @@
     </div>
   </section>
 </div>
+
+<alert-success [isOpen]="isOpen" (toggleShowAlert)="toggle($event)" message="Connecté avec succes!"></alert-success>
