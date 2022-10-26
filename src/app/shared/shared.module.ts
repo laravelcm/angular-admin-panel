@@ -13,6 +13,7 @@ import { TextareaModule } from './components/textarea/textarea.module';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { StatusColorPipe } from './pipes/status-color.pipe';
 import { StatusValuePipe } from './pipes/status-value.pipe';
+import { NotificationsModule } from './components/notifications/notifications.module';
 
 const DECLARATIONS = [ClickOutsideDirective, StatusColorPipe, StatusValuePipe];
 const MODULES = [
@@ -24,6 +25,7 @@ const MODULES = [
   SkeletonModule,
   SnippetModule,
   TextareaModule,
+  NotificationsModule
 ];
 
 @NgModule({

@@ -40,7 +40,9 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
                     stroke-linejoin="round" />
                 </svg>
               </div>
-              <div class="ml-3 w-0 flex-1 pt-0.5">
+              <div
+                *ngIf="networkStatus === 'online'"
+                class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium text-slate-900 capitalize">
                   {{ networkStatus }}
                 </p>
