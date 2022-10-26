@@ -16,10 +16,12 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <!-- Heroicon name: outline/check-circle -->
                 <svg
                   class="h-6 w-6"
-                  [ngClass]="{'text-green-400': networkStatus === 'online', 'text-red-400': networkStatus === 'offline'}"
+                  [ngClass]="{
+                    'text-green-400': networkStatus === 'online',
+                    'text-red-400': networkStatus === 'offline'
+                  }"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
