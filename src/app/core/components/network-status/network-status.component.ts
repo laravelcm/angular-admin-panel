@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'network-status',
@@ -17,7 +18,8 @@ import { Component, Input, OnInit } from '@angular/core';
               <div class="flex-shrink-0">
                 <!-- Heroicon name: outline/check-circle -->
                 <svg
-                  class="h-6 w-6 text-green-400"
+                  class="h-6 w-6"
+                  [ngClass]="{'text-green-400': networkStatus === 'online', 'text-red-400': networkStatus === 'offline'}"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -25,30 +27,37 @@ import { Component, Input, OnInit } from '@angular/core';
                   stroke="currentColor"
                   aria-hidden="true">
                   <path
+                    *ngIf="networkStatus === 'online'"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path
+                    *ngIf="networkStatus === 'offline'"
+                    d="M15.312 10c1.368.426 2.65 1.12 3.768 2.05m3.5-3.55a16 16 0 0 0-12.383-3.896M8.53 15.61a6 6 0 0 1 6.95 0M12 19.5h.01M1.193 8.7A16.014 16.014 0 0 1 5.76 5.764m-1.027 6.48a10.966 10.966 0 0 1 5-2.51m5.966 6.042A5.974 5.974 0 0 0 12 14.5c-1.416 0-2.718.49-3.745 1.312M3 3l18 18"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </div>
-              <div class="ml-3 w-0 flex-1 pt-0.5">
+              <div *ngIf="networkStatus === 'online'" class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium text-slate-900 capitalize">
-                  Online
+                  {{ networkStatus }}
                 </p>
                 <p class="mt-1 text-sm text-slate-500">
-                  Anyone with a link can now view this file.
+                  {{ networkStatusMessage }}
+                </p>
+              </div>
+              <div *ngIf="networkStatus === 'offline'" class="ml-3 w-0 flex-1 pt-0.5">
+                <p class="text-sm font-medium text-slate-900 capitalize">
+                  {{ networkStatus }}
+                </p>
+                <p class="mt-1 text-sm text-slate-500">
+                  {{ networkStatusMessage }}
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div *ngIf="networkStatus === 'online'" class="online">
-      <span>{{ networkStatusMessage }}</span>
-    </div>
-
-    <div *ngIf="networkStatus === 'offline'" class="offline">
-      <span>{{ networkStatusMessage }}</span>
     </div>
   `,
   animations: [
@@ -64,14 +73,48 @@ import { Component, Input, OnInit } from '@angular/core';
   ],
 })
 export class NetworkStatusComponent implements OnInit {
-  @Input() networkStatusMessage!: string;
-  @Input() networkStatus!: string;
+  networkStatusMessage!: string;
+  networkStatus!: string;
 
-  showNetworkStatus: boolean = true;
+  onlineEvent!: Observable<Event>;
+  offlineEvent!: Observable<Event>;
+  subscriptions: Subscription[] = [];
+
+  showNetworkStatus!: boolean;
 
   ngOnInit() {
+    this.networkStatusChecker();
+  }
+
+  showHideNetworkStatus() {
+    this.showNetworkStatus = true;
     setTimeout(() => {
       this.showNetworkStatus = false;
     }, 3000);
+  }
+
+  networkStatusChecker(): void {
+    this.onlineEvent = fromEvent(window, 'online');
+    this.offlineEvent = fromEvent(window, 'offline');
+
+    this.subscriptions.push(
+      this.onlineEvent.subscribe(() => {
+        this.networkStatus = 'online';
+        this.networkStatusMessage = $localize`Vous êtes de nouveau en ligne.`;
+        this.showHideNetworkStatus();
+      })
+    );
+
+    this.subscriptions.push(
+      this.offlineEvent.subscribe(() => {
+        this.networkStatus = 'offline';
+        this.networkStatusMessage = $localize`Connexion perdue ! Vous n'êtes pas connecté à l'Internet`;
+        this.showHideNetworkStatus();
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }
