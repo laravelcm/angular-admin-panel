@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SeoService } from '@app/shared/services/seo.service';
-
 @Component({
   selector: 'admin-root',
-  template: '<router-outlet></router-outlet>',
+  template: `
+    <router-outlet></router-outlet>
+    <network-status></network-status>
+  `,
 })
 export class AppComponent implements OnInit {
   mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-  public constructor(private seoService: SeoService) {}
 
   ngOnInit(): void {
     document.documentElement.setAttribute('data-theme', this.updateTheme());

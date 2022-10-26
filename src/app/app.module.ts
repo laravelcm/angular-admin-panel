@@ -20,17 +20,18 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { environment } from 'environments/environment';
 import { AppRoutingModule } from './core/routes/app-routing.module';
-import { AppComponent } from './core/components/app/app.component';
 import { ROOT_REDUCERS } from './core/store/app.store';
 import { AuthInterceptor } from './modules/authentication/interceptors/auth.interceptor';
 import { HttpLoadingInterceptor } from './shared/interceptors/http-loading.interceptor';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { ErrorsInterceptor } from './shared/interceptors/errors.interceptor';
+import { AppComponent } from './core/components/app/app.component';
+import { NetworkStatusComponent } from './core/components/network-status/network-status.component';
 
 registerLocaleData(localeFr);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NetworkStatusComponent],
   imports: [
     AppRoutingModule,
     AuthenticationModule,
