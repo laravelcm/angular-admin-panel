@@ -16,10 +16,12 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
           <div class="p-4">
             <div class="flex items-start">
               <div class="flex-shrink-0">
-                <!-- Heroicon name: outline/check-circle -->
                 <svg
                   class="h-6 w-6"
-                  [ngClass]="{'text-green-400': networkStatus === 'online', 'text-red-400': networkStatus === 'offline'}"
+                  [ngClass]="{
+                    'text-green-400': networkStatus === 'online',
+                    'text-red-400': networkStatus === 'offline'
+                  }"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -38,15 +40,9 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
                     stroke-linejoin="round" />
                 </svg>
               </div>
-              <div *ngIf="networkStatus === 'online'" class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-slate-900 capitalize">
-                  {{ networkStatus }}
-                </p>
-                <p class="mt-1 text-sm text-slate-500">
-                  {{ networkStatusMessage }}
-                </p>
-              </div>
-              <div *ngIf="networkStatus === 'offline'" class="ml-3 w-0 flex-1 pt-0.5">
+              <div
+                *ngIf="networkStatus === 'online'"
+                class="ml-3 w-0 flex-1 pt-0.5">
                 <p class="text-sm font-medium text-slate-900 capitalize">
                   {{ networkStatus }}
                 </p>
@@ -63,53 +59,50 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
   animations: [
     trigger('showHideNotification', [
       transition('void => *', [
-        style({ transform: "translateX(0.5rem)", opacity: 0 }),
-        animate(300, style({ transform: "translateX(0)", opacity: 1 }))
+        style({ transform: 'translateX(0.5rem)', opacity: 0 }),
+        animate(300, style({ transform: 'translateX(0)', opacity: 1 })),
       ]),
-      transition('* => void', [
-        animate(100, style({ opacity: 0 }))
-      ])
+      transition('* => void', [animate(100, style({ opacity: 0 }))]),
     ]),
   ],
 })
 export class NetworkStatusComponent implements OnInit {
   networkStatusMessage!: string;
   networkStatus!: string;
-
-  onlineEvent!: Observable<Event>;
-  offlineEvent!: Observable<Event>;
   subscriptions: Subscription[] = [];
-
   showNetworkStatus!: boolean;
+
+  onlineEvent$!: Observable<Event>;
+  offlineEvent$!: Observable<Event>;
 
   ngOnInit() {
     this.networkStatusChecker();
   }
 
-  showHideNetworkStatus() {
+  toggleNetworkStatus(): void {
     this.showNetworkStatus = true;
     setTimeout(() => {
       this.showNetworkStatus = false;
-    }, 3000);
+    }, 5000);
   }
 
   networkStatusChecker(): void {
-    this.onlineEvent = fromEvent(window, 'online');
-    this.offlineEvent = fromEvent(window, 'offline');
+    this.onlineEvent$ = fromEvent(window, 'online');
+    this.offlineEvent$ = fromEvent(window, 'offline');
 
     this.subscriptions.push(
-      this.onlineEvent.subscribe(() => {
+      this.onlineEvent$.subscribe(() => {
         this.networkStatus = 'online';
         this.networkStatusMessage = $localize`Vous êtes de nouveau en ligne.`;
-        this.showHideNetworkStatus();
+        this.toggleNetworkStatus();
       })
     );
 
     this.subscriptions.push(
-      this.offlineEvent.subscribe(() => {
+      this.offlineEvent$.subscribe(() => {
         this.networkStatus = 'offline';
-        this.networkStatusMessage = $localize`Connexion perdue ! Vous n'êtes pas connecté à l'Internet`;
-        this.showHideNetworkStatus();
+        this.networkStatusMessage = $localize`Vous n'êtes pas connecté à l'Internet`;
+        this.toggleNetworkStatus();
       })
     );
   }
