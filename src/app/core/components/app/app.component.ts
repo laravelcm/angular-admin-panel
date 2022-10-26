@@ -38,14 +38,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   networkStatus(): void {
-    console.log('dfs');
-    
     this.onlineEvent = fromEvent(window, 'online');
     this.offlineEvent = fromEvent(window, 'offline');
 
     this.subscriptions.push(
       this.onlineEvent.subscribe(() => {
-        console.log("qqqq");
         this.connectionStatus = 'online';
         this.connectionStatusMessage = $localize`Vous êtes de nouveau en ligne.`;
       })
@@ -53,14 +50,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(
       this.offlineEvent.subscribe(() => {
-        console.log("ffff");
-        
         this.connectionStatus = 'offline';
-        this.connectionStatusMessage = $localize`Vous n'êtes pas connecté à l'Internet`;
+        this.connectionStatusMessage = $localize`Connexion perdue ! Vous n'êtes pas connecté à l'Internet`;
       })
     );
 
-    console.log(this.connectionStatus);
+    
   }
 
   updateTheme(savedTheme: string | null = null): string {
