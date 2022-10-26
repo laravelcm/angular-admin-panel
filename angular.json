@@ -19,6 +19,15 @@
           "skipTests": true
         }
       },
+      "i18n": {
+        "sourceLocale": "fr-FR",
+        "locales": {
+          "en": {
+            "translation": "src/locales/messages.en-US.xlf",
+            "baseHref": "/en/"
+          }
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "admin",
@@ -69,6 +78,9 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "en": {
+              "localize": ["en"]
             }
           },
           "defaultConfiguration": "production"
@@ -81,6 +93,9 @@
             },
             "development": {
               "browserTarget": "admin-cpanel:build:development"
+            },
+            "en": {
+              "browserTarget": "admin-cpanel:build:development,en"
             }
           },
           "defaultConfiguration": "development"

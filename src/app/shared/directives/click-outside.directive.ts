@@ -10,9 +10,9 @@ import {
   selector: '[ClickOutside]',
 })
 export class ClickOutsideDirective {
-  constructor(private elementRef: ElementRef) {}
-
   @Output() clickOutside = new EventEmitter<MouseEvent>();
+
+  constructor(private elementRef: ElementRef) {}
 
   @HostListener('document:click', ['$event', '$event.target'])
   public onClick(event: MouseEvent, targetElement: HTMLElement): void {

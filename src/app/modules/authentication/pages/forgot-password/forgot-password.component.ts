@@ -14,7 +14,7 @@ import {
   templateUrl: './forgot-password.component.html',
 })
 export class ForgotPasswordComponent {
-  public form: FormGroup = this.formBuilder.group({
+  public form: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
   });
 
@@ -24,7 +24,7 @@ export class ForgotPasswordComponent {
 
   public loading$: Observable<boolean> = this.store.select(selectLoading);
 
-  constructor(private formBuilder: FormBuilder, private store: Store) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   public submit() {
     if (this.form.valid) {

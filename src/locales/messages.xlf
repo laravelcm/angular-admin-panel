@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="fr-FR" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="4390770950707898456" datatype="html">
+        <source>Mot de passe oublié?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">44,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="340683984775672689" datatype="html">
+        <source> Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3131862248575056929" datatype="html">
+        <source>Adresse E-mail</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <note priority="1" from="description">attr-email</note>
+      </trans-unit>
+      <trans-unit id="1768337911781584581" datatype="html">
+        <source> Envoyer le lien de réinitialisation </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8479216823512181174" datatype="html">
+        <source>Retournez à la page de connexion</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6727684137001022942" datatype="html">
+        <source>Connectez-vous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3539102693655611822" datatype="html">
+        <source> Admin Panel - Administration de la votre plateforme. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5249891717669571568" datatype="html">
+        <source>Mot de passe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="description">attr-password</note>
+      </trans-unit>
+      <trans-unit id="3469312485872807064" datatype="html">
+        <source>Se souvenir de moi</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7919452934138804929" datatype="html">
+        <source>Se connecter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/login/login.component.html</context>
+          <context context-type="linenumber">55,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1496384060736943589" datatype="html">
+        <source>Réinitialisation Mot de passe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5204089959639018012" datatype="html">
+        <source> Veuillez renseignez votre nouveau mot de passe pour vous connectez. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3143758897900443465" datatype="html">
+        <source>Nouveau Mot de passe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="description">attr-new-password</note>
+      </trans-unit>
+      <trans-unit id="2551997964969349678" datatype="html">
+        <source>Confirmer Mot de passe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+        <note priority="1" from="description">attr-confirm-password</note>
+      </trans-unit>
+      <trans-unit id="8190131122682355699" datatype="html">
+        <source> Réinitialiser Mot de passe </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/authentication/pages/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5326805816398599201" datatype="html">
+        <source>Aperçu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7958494441872403012" datatype="html">
+        <source>Tableau de bord</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5909537349952143751" datatype="html">
+        <source>Statistiques</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7615147220727762615" datatype="html">
+        <source>Management</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3286523266994130553" datatype="html">
+        <source>Utilisateurs</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3864231224436185235" datatype="html">
+        <source>Roles &amp; Permissions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3317567537216101731" datatype="html">
+        <source>Opérations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5460349843625378822" datatype="html">
+        <source>Paramètres</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/navigation/admin.menu.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2830844041427574950" datatype="html">
+        <source>Lien rapides</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4895326106573044490" datatype="html">
+        <source>Documentation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1736092181358665807" datatype="html">
+        <source> Une documentation simple pour rapidement utiliser le boilerplate pour votre administration. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">23,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9086277402937874927" datatype="html">
+        <source>Bénéfices</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8802579884825303118" datatype="html">
+        <source> Un boilerplate <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;font-medium text-slate-700 dark:text-white&quot;&gt;"/>Ready To Use<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> pour créer une administration avec Angular 13 et Laravel. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">50,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="152625797886681940" datatype="html">
+        <source>Technologies</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6281038415909188561" datatype="html">
+        <source> Ce projet tourne sur la version 13 d&apos;Angular et pour le style, Tailwind v3.1 est utilisé. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">77,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4589286206488836312" datatype="html">
+        <source>Sponsoring</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7839678085701291317" datatype="html">
+        <source> Pour soutenir le developpement de ce projet, vous pouvez faire un don pour encorager la Team. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">104,106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4665720168044491820" datatype="html">
+        <source> Toute l&apos;architecture NgRx et RxJS est inspiré de la documentation officielle de NgRx. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">131,133</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1338480611696165967" datatype="html">
+        <source>Formation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">155</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1452761840466799565" datatype="html">
+        <source> Obtenez une réduction de 10€ sur la formation Angular en vous inscrivant sur Dyma.fr. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/dashboard/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">158,160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="584588207882399493" datatype="html">
+        <source>Recherche rapide</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5126978152760475620" datatype="html">
+        <source>Vous rencontrez un problème ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7103588127254721505" datatype="html">
+        <source>Theme</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">86,87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5897809045797138092" datatype="html">
+        <source>Ouvrir le menu utilisateur</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">163,164</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3508381475870886444" datatype="html">
+        <source>Connecté avec</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">185,186</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8402275345313793257" datatype="html">
+        <source> Mon compte </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">195</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4582553960510804223" datatype="html">
+        <source> Support </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">198</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2897974574967062352" datatype="html">
+        <source> Guide d&apos;utilisation </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">201</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="163562855257269985" datatype="html">
+        <source> Se déconnecter </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.html</context>
+          <context context-type="linenumber">206</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1457465744784609195" datatype="html">
+        <source>Clair</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1340402315065808486" datatype="html">
+        <source>Sombre</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1894701547497580370" datatype="html">
+        <source>Système</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/header/header.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5612278348549511379" datatype="html">
+        <source>Bientôt</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/components/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2836269053847958268" datatype="html">
+        <source>Copyright © <x id="INTERPOLATION" equiv-text="{{ date }}"/> Laravel Cameroun.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/layouts/auth/auth.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7844706011418789951" datatype="html">
+        <source>Administration</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4200089939196324140" datatype="html">
+        <source>Page introuvable.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8045887825111278978" datatype="html">
+        <source>Désolé, nous n&apos;avons pas trouvé la page que vous recherchez.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="37427966907131214" datatype="html">
+        <source> Retourner à l&apos;accueil <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span aria-hidden=&quot;true&quot;&gt;"/> →<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7205753262217313784" datatype="html">
+        <source>Contactez le Support</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5611592591303869712" datatype="html">
+        <source>Status</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/themes/pages/not-found/not-found.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

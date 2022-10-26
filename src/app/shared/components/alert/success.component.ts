@@ -41,8 +41,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
         animate(300, style({ transform: "translateX(0)", opacity: 1 }))
       ]),
       transition('* => void', [
-        style({ opacity: 0 }),
-        animate(100, style({ opacity: 1 }))
+        animate(100, style({ opacity: 0 }))
       ])
     ]),
   ],
@@ -59,6 +58,8 @@ export class SuccessComponent {
   @Input() description!: string;
 
   toggle(){
-    this.toggleShowAlert.emit(false);
+    setTimeout(() => {
+      this.toggleShowAlert.emit(false);
+    }, 2000);
   }
 }

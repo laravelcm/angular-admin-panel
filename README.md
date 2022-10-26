@@ -1,7 +1,8 @@
-# Cosna Admin Cpanel
+# Angular Admin Cpanel
 
 🚀 Admin panel boilerplate to quickly scaffold any large scale enterprise application for Angular. Built with the Tailwind, fully customizable and developer-first.
-This project use ANgular 13+
+
+> This project use Angular 13+
 
 ### ⏳ Installation
 

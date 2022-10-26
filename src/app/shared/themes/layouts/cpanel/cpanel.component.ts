@@ -39,7 +39,6 @@ import { LoadingService } from '../../services/loading.service';
 })
 export class CpanelComponent implements OnInit {
   loading!: boolean;
-
   mobileSidebarOpen!: boolean;
 
   toggleSidebar(): void {

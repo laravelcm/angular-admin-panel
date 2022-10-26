@@ -6,8 +6,7 @@ import { status } from '@app/shared/interfaces/values.interface';
   name: 'statusColor'
 })
 export class StatusColorPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): string {
+  transform(value: string): string {
     switch (value) {
       case status.pending.label:
         return 'bg-orange-100 text-orange-800';
@@ -23,5 +22,4 @@ export class StatusColorPipe implements PipeTransform {
         return 'bg-slate-100 text-slate-800';
     }
   }
-
 }

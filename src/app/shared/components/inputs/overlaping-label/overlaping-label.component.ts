@@ -16,21 +16,13 @@ export class OverlapingLabelComponent implements ControlValueAccessor {
   value: string = '';
 
   @Input() label!: string | null;
-
   @Input() placeholder!: string | null;
-
   @Input() name!: string;
-
   @Input() type: string = 'text';
-
   @Input() required: boolean = false;
-
   @Input() disabled!: boolean;
-
   @Input() containerClass!: string;
-
   @Input() inputClass!: string;
-
   @Input() helpText!: string | null;
 
   writeValue(value: string): void {

@@ -1,47 +1,55 @@
-export const pagination = {
+import { Pagination } from './response.interface';
+
+/**
+ * This pagination Object is the default structure of
+ * a Custom Laravel Eloquent Pagination Response
+ *
+ * @see https://laravel.com/docs/eloquent-resources#pagination
+ */
+export const pagination: Pagination = {
   total: 0,
-  per_page: 0,
-  current_page: 0,
-  next_page: null,
-  prev_page: null,
-  first_page: null,
-  last_page: null,
+  perPage: 0,
+  currentPage: 0,
+  nextPage: null,
+  prevPage: null,
+  firstPage: null,
+  lastPage: null,
   from: 0,
   to: 0,
-  total_pages: 0,
+  totalPages: 0,
 };
 
 export const status = {
   pending: {
     label: 'PENDING',
-    locale: 'En attente',
+    locale: $localize`En attente`,
   },
   success: {
     label: 'SUCCESS',
-    locale: 'Réussi',
+    locale: $localize`Réussi`,
   },
   failed: {
     label: 'FAILED',
-    locale: 'Échoué',
+    locale: $localize`Échoué`,
   },
   rejected: {
     label: 'REJECTED',
-    locale: 'Rejeté',
+    locale: $localize`Rejeté`,
   },
   canceled: {
     label: 'CANCELED',
-    locale: 'Annulé',
+    locale: $localize`Annulé`,
   },
   completed: {
     label: 'COMPLETED',
-    locale: 'Terminé',
+    locale: $localize`Terminé`,
   },
   refunded: {
     label: 'REFUNDED',
-    locale: 'Remboursé',
+    locale: $localize`Remboursé`,
   },
   processing: {
     label: 'PROCESSING',
-    locale: 'En cours',
+    locale: $localize`En cours`,
   },
-}
+};

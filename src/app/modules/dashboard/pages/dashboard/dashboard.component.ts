@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   templateUrl: './dashboard.component.html',
@@ -7,7 +8,7 @@ export class DashboardComponent implements OnInit {
 
   isOpen: boolean = false;
 
-  constructor() { }
+  constructor(private title: Title) { }
 
   ngOnInit(): void {
   }
@@ -15,5 +16,4 @@ export class DashboardComponent implements OnInit {
   toggle(value: boolean) {
     this.isOpen = value
   }
-
 }

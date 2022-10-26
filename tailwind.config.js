@@ -12,11 +12,7 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.green,
-        secondary: {
-          lighter: '#F29121',
-          light: '#F8B133',
-          ...colors.emerald
-        }
+        secondary: colors.emerald
       },
       fontFamily: {
         sans: ['Inter var', ...fontFamily.sans],

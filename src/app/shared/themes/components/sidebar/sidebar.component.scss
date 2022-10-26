@@ -1,19 +1,17 @@
-.sidebar {
-  box-shadow: inset -2px 1px 5px 0 rgba(0, 0, 0, 0.05);
-}
 
 .menu {
-  @apply flex items-center px-6 py-2 text-sm font-medium border-l-4 border-transparent text-slate-600 hover:text-slate-900;
-
-  svg {
-    @apply text-slate-600 group-hover:text-slate-900;
-  }
+  @apply flex items-center px-6 py-2 text-sm font-medium border-l-4 border-transparent;
   
   &-current {
-    @apply text-primary-600 border-primary-600 hover:text-primary-600;
+    @apply border-primary-600;
+    color: theme('colors.primary.600') !important;
+    &:hover {
+      color: theme('colors.primary.600') !important;
+    }
   
     svg {
-      @apply text-primary-600 group-hover:text-primary-600;
+      @apply group-hover:text-primary-600;
+      stroke: theme('colors.primary.600') !important;
     }
   }
 }

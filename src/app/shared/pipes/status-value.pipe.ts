@@ -3,11 +3,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { status } from '@app/shared/interfaces/values.interface';
 
 @Pipe({
-  name: 'statusValue'
+  name: 'statusValue',
 })
 export class StatusValuePipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): string {
+  transform(value: string): string {
     switch (value) {
       case status.pending.label:
         return status.pending.locale;
@@ -20,8 +19,7 @@ export class StatusValuePipe implements PipeTransform {
       case status.canceled.label:
         return status.canceled.locale;
       default:
-        return 'Pas disponible';
+        return $localize`Pas disponible`;
     }
   }
-
 }

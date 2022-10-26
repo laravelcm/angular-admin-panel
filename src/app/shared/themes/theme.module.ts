@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRippleModule } from '@angular/material/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
+
+import { SkeletonModule } from '../components/skeletons/skeleton.module';
 
 import { AuthComponent } from './layouts/auth/auth.component';
 import { CpanelComponent } from './layouts/cpanel/cpanel.component';
@@ -17,10 +18,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 const MODULES = [
   CommonModule,
   RouterModule,
-  NgxSkeletonLoaderModule,
   MatProgressBarModule,
   MatSlideToggleModule,
   MatRippleModule,
+  SkeletonModule,
 ];
 
 @NgModule({

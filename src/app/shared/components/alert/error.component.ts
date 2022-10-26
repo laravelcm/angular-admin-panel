@@ -34,8 +34,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ErrorComponent {
   @Input() class!: string;
-
   @Input() message!: string;
-
   @Input() errors: string[] = [];
 }

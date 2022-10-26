@@ -15,18 +15,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class TextareaSimpleComponent implements ControlValueAccessor {
   value: string = '';
 
-  @Input() label!: string;
-
-  @Input() name!: string;
-
   @Input() placeholder: string = '';
-
+  @Input() label!: string;
+  @Input() name!: string;
   @Input() class!: string;
-
   @Input() disabled!: boolean;
-
   @Input() required!: boolean;
-
   @Input() helpText!: string;
 
   writeValue(value: string): void {

@@ -5,6 +5,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -26,7 +27,6 @@ import { logoutAction } from '@app/modules/authentication/store/auth.actions';
 @Component({
   selector: 'admin-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
   animations: [
     trigger('openClose', [
       state('open', style({ opacity: 1, transform: 'scale(1, 1)' })),
@@ -36,8 +36,15 @@ import { logoutAction } from '@app/modules/authentication/store/auth.actions';
     ]),
   ],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   mobileMenuOpen!: boolean;
+  currentTheme!: string;
+  showDialog: boolean = false;
+  themes: { name: string; value: string }[] = [
+    { name: $localize`Clair`, value: 'light' },
+    { name: $localize`Sombre`, value: 'dark' },
+    { name: $localize`Système`, value: 'system' },
+  ];
 
   @ViewChild('menuDropdown') menuDropdown!: ElementRef;
 
@@ -45,18 +52,36 @@ export class HeaderComponent {
     new EventEmitter<boolean>();
 
   public user$: Observable<User | null> = this.store.select(selectCurrentUser);
-
   public loading$: Observable<boolean> = this.store.select(selectLoading);
 
-  public logout() {
-    this.store.dispatch(logoutAction());
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    const selectedTheme = window.localStorage.getItem('theme');
+
+    if (selectedTheme) {
+      document.documentElement.setAttribute('data-theme', selectedTheme);
+    } else {
+      const theme = this.themes.find(
+        theme =>
+          theme.value === document.documentElement.getAttribute('data-theme')
+      );
+      window.localStorage.setItem('theme', theme!.value);
+    }
+
+    this.currentTheme = window.localStorage.getItem('theme')!;
   }
 
   get openCloseTrigger() {
     return this.mobileMenuOpen ? 'open' : 'closed';
   }
 
+  logout(): void {
+    this.store.dispatch(logoutAction());
+  }
+
   toggleMobileMenu(): void {
+    this.showDialog = false;
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
@@ -74,5 +99,11 @@ export class HeaderComponent {
     }
   }
 
-  constructor(private store: Store) {}
+  updateTheme(theme: string): void {
+    document.documentElement.setAttribute('data-theme', theme);
+    window.localStorage.setItem('theme', theme);
+
+    this.currentTheme = theme;
+    this.showDialog = false;
+  }
 }

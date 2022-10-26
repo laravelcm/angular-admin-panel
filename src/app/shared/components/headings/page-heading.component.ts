@@ -22,6 +22,5 @@ import { Component, Input } from '@angular/core';
 })
 export class PageHeadingComponent {
   @Input() title!: string;
-
   @Input() description!: string;
 }

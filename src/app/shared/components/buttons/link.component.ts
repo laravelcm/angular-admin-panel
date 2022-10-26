@@ -13,6 +13,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonLinkComponent {
   @Input() link!: any;
-
   @Input() class!: string;
 }
