@@ -1,9 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'network-status',
   template: `
     <div
+      *ngIf="showNetworkStatus"
+      @showHideNotification
       aria-live="assertive"
       class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:p-6">
       <div class="flex w-full flex-col items-end space-y-4">
@@ -48,8 +51,27 @@ import { Component, Input } from '@angular/core';
       <span>{{ networkStatusMessage }}</span>
     </div>
   `,
+  animations: [
+    trigger('showHideNotification', [
+      transition('void => *', [
+        style({ transform: "translateX(0.5rem)", opacity: 0 }),
+        animate(300, style({ transform: "translateX(0)", opacity: 1 }))
+      ]),
+      transition('* => void', [
+        animate(100, style({ opacity: 0 }))
+      ])
+    ]),
+  ],
 })
-export class NetworkStatusComponent {
+export class NetworkStatusComponent implements OnInit {
   @Input() networkStatusMessage!: string;
   @Input() networkStatus!: string;
+
+  showNetworkStatus: boolean = true;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.showNetworkStatus = false;
+    }, 3000);
+  }
 }
