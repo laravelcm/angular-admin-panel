@@ -1,7 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-type NotificationType = 'success' | 'error' | 'info' | 'warning';
+import { NotificationType } from '@app/core/interfaces/notification.interface';
 
 @Component({
   selector: 'simple-notification',
@@ -120,8 +119,8 @@ type NotificationType = 'success' | 'error' | 'info' | 'warning';
 export class SimpleNotificationComponent {
   @Input('isOpen') showNotification!: boolean;
   @Input() class!: string;
-  @Input() title!: string | null;
-  @Input() message!: string;
+  @Input() title!: string | null | undefined;
+  @Input() message: string | undefined;
   @Input() type: NotificationType = 'success';
 
   @Output() toggleShowNotification: EventEmitter<boolean> =

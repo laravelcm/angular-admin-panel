@@ -1,16 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { Notification } from '@app/core/interfaces/notification.interface';
+import { resetNotificationStatusAction } from '@app/core/store/notification/notification.actions';
+import { selectNotification } from '@app/core/store/notification/notification.selectors';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'admin-root',
   template: `
     <router-outlet></router-outlet>
     <network-status></network-status>
+    <simple-notification (toggleShowNotification)="close($event)" [isOpen]="isOpen" [title]="notification?.title" [message]="notification?.description"><simple-notification>
+    <!-- <simple-notification (toggleShowNotification)="close($event)" [isOpen]="isOpen" [type]="notification.notificationType"><simple-notification> -->
   `,
 })
 export class AppComponent implements OnInit {
   mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
+  notification!: Notification;
+  isOpen!: boolean;
+  notification$: Observable<Notification | null> = this.store.select(selectNotification);
+
+  constructor(private store: Store) {}
+
   ngOnInit(): void {
+
+    this.notification$.subscribe(data => {
+      if (data) {
+        this.notification = data;
+        this.isOpen = true;
+        setTimeout(() => {
+          this.isOpen = false;
+        }, 3000)
+      }
+    })
+
     document.documentElement.setAttribute('data-theme', this.updateTheme());
 
     new MutationObserver(([{ oldValue }]) => {
@@ -25,6 +49,11 @@ export class AppComponent implements OnInit {
       attributeFilter: ['data-theme'],
       attributeOldValue: true,
     });
+  }
+
+  close(value: boolean) {
+    resetNotificationStatusAction();
+    this.isOpen = false;
   }
 
   updateTheme(savedTheme: string | null = null): string {

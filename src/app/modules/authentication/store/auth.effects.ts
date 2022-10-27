@@ -12,11 +12,14 @@ import {
 } from '../interfaces/credentials.interface';
 import { AuthResponse } from '@app/modules/user/interfaces/user.interface';
 import { LocalStorageService } from '../services/local-storage.service';
+import { getNotificationStatusAction } from '@app/core/store/notification/notification.actions';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
+    private store: Store,
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     private router: Router
@@ -42,6 +45,12 @@ export class AuthEffects {
             );
 
             this.router.navigateByUrl('/dashboard');
+
+            this.store.dispatch(getNotificationStatusAction({ notification: {
+              title: 'Connexion',
+              description: "Vous êtes desormais connecté!",
+              notificationType: 'success'
+            }}))
 
             return AuthActions.fetchAuthenticateSuccessAction({
               user: authResponse.data.user,
@@ -145,6 +154,13 @@ export class AuthEffects {
       switchMap(() =>
         this.authService.logout().pipe(
           map(() => {
+
+            this.store.dispatch(getNotificationStatusAction({ notification: {
+              title: 'Déconnexion',
+              description: "Vous êtes desormais déconnecté!",
+              notificationType: 'success',
+            }}))
+
             this.localStorageService.removeAccessToken();
             this.router.navigateByUrl('/auth/login');
             return AuthActions.fetchLogoutSuccessAction();
