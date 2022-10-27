@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 import { Notification } from '@app/core/interfaces/notification.interface';
 import { resetNotificationStatusAction } from '@app/core/store/notification/notification.actions';
 import { selectNotification } from '@app/core/store/notification/notification.selectors';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'admin-root',
   template: `
     <router-outlet></router-outlet>
     <network-status></network-status>
-    <simple-notification (toggleShowNotification)="close($event)" [isOpen]="isOpen" [title]="notification?.title" [message]="notification?.description"><simple-notification>
+    <simple-notification *ngIf="notification" (toggleShowNotification)="close($event)" [isOpen]="isOpen" [title]="notification.title" [message]="notification.message"><simple-notification>
   `,
 })
 export class AppComponent implements OnInit {
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   close(value: boolean) {
-    resetNotificationStatusAction();
+    this.store.dispatch(resetNotificationStatusAction());
     this.isOpen = false;
   }
 

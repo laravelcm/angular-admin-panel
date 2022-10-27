@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../services/auth.service';
@@ -13,7 +14,7 @@ import {
 import { AuthResponse } from '@app/modules/user/interfaces/user.interface';
 import { LocalStorageService } from '../services/local-storage.service';
 import { getNotificationStatusAction } from '@app/core/store/notification/notification.actions';
-import { Store } from '@ngrx/store';
+import { Notification } from '@app/core/interfaces/notification.interface';
 
 @Injectable()
 export class AuthEffects {
@@ -46,11 +47,13 @@ export class AuthEffects {
 
             this.router.navigateByUrl('/dashboard');
 
-            this.store.dispatch(getNotificationStatusAction({ notification: {
+            const notification: Notification = {
               title: 'Connexion',
-              description: "Vous êtes desormais connecté!",
+              message: "Vous êtes desormais connecté!",
               type: 'success'
-            }}))
+            }
+
+            this.store.dispatch(getNotificationStatusAction({ notification }))
 
             return AuthActions.fetchAuthenticateSuccessAction({
               user: authResponse.data.user,
@@ -157,7 +160,7 @@ export class AuthEffects {
 
             this.store.dispatch(getNotificationStatusAction({ notification: {
               title: 'Déconnexion',
-              description: "Vous êtes desormais déconnecté!",
+              message: "Vous êtes desormais déconnecté!",
               type: 'success',
             }}))
 

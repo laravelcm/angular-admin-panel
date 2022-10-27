@@ -15,7 +15,7 @@ export const notificationReducer = createReducer(
         (state: NotificationState, { notification }: { notification: Notification }): NotificationState => {
             return {
                 ...state,
-                notification: notification,
+                notification,
             }
         }
     ),

@@ -4,7 +4,7 @@ export interface NotificationState {
 
 export interface Notification {
     title: string | null;
-    description: string;
+    message: string;
     type: Type;
 }
 
