@@ -5,7 +5,7 @@ export interface NotificationState {
 export interface Notification {
     title: string | null;
     description: string;
-    notificationType: NotificationType;
+    type: Type;
 }
 
-export type NotificationType = 'success' | 'error' | 'info' | 'warning';
+export type Type = 'success' | 'error' | 'info' | 'warning';

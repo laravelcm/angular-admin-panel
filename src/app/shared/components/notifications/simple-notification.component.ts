@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NotificationType } from '@app/core/interfaces/notification.interface';
+import { Type } from '@app/core/interfaces/notification.interface';
 
 @Component({
   selector: 'simple-notification',
@@ -121,7 +121,7 @@ export class SimpleNotificationComponent {
   @Input() class!: string;
   @Input() title!: string | null | undefined;
   @Input() message: string | undefined;
-  @Input() type: NotificationType = 'success';
+  @Input() type: Type = 'success';
 
   @Output() toggleShowNotification: EventEmitter<boolean> =
     new EventEmitter<boolean>();

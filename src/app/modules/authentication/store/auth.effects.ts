@@ -49,7 +49,7 @@ export class AuthEffects {
             this.store.dispatch(getNotificationStatusAction({ notification: {
               title: 'Connexion',
               description: "Vous êtes desormais connecté!",
-              notificationType: 'success'
+              type: 'success'
             }}))
 
             return AuthActions.fetchAuthenticateSuccessAction({
@@ -158,7 +158,7 @@ export class AuthEffects {
             this.store.dispatch(getNotificationStatusAction({ notification: {
               title: 'Déconnexion',
               description: "Vous êtes desormais déconnecté!",
-              notificationType: 'success',
+              type: 'success',
             }}))
 
             this.localStorageService.removeAccessToken();

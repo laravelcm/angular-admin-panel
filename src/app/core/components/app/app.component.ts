@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
     <router-outlet></router-outlet>
     <network-status></network-status>
     <simple-notification (toggleShowNotification)="close($event)" [isOpen]="isOpen" [title]="notification?.title" [message]="notification?.description"><simple-notification>
-    <!-- <simple-notification (toggleShowNotification)="close($event)" [isOpen]="isOpen" [type]="notification.notificationType"><simple-notification> -->
   `,
 })
 export class AppComponent implements OnInit {
