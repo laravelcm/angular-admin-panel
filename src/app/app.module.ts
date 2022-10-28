@@ -27,6 +27,7 @@ import { AuthenticationModule } from './modules/authentication/authentication.mo
 import { ErrorsInterceptor } from './shared/interceptors/errors.interceptor';
 import { AppComponent } from './core/components/app/app.component';
 import { NetworkStatusComponent } from './core/components/network-status/network-status.component';
+import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localeFr);
 
@@ -38,6 +39,7 @@ registerLocaleData(localeFr);
     BrowserAnimationsModule,
     BrowserModule,
     EffectsModule.forRoot(),
+    SharedModule,
     FormsModule,
     HttpClientModule,
     NgxPermissionsModule.forRoot(),

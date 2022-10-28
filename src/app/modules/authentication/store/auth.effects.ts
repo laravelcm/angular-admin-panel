@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../services/auth.service';
@@ -12,11 +13,14 @@ import {
 } from '../interfaces/credentials.interface';
 import { AuthResponse } from '@app/modules/user/interfaces/user.interface';
 import { LocalStorageService } from '../services/local-storage.service';
+import { getNotificationStatusAction } from '@app/core/store/notification/notification.actions';
+import { Notification } from '@app/core/interfaces/notification.interface';
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
+    private store: Store,
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     private router: Router
@@ -43,6 +47,13 @@ export class AuthEffects {
 
             this.router.navigateByUrl('/dashboard');
 
+            const notification: Notification = {
+              message: $localize`Vous êtes desormais connecté!`,
+              type: 'success',
+            };
+
+            this.store.dispatch(getNotificationStatusAction({ notification }));
+
             return AuthActions.fetchAuthenticateSuccessAction({
               user: authResponse.data.user,
               roles: authResponse.data.roles,
@@ -52,7 +63,8 @@ export class AuthEffects {
           catchError(error => {
             return of(
               AuthActions.fetchAuthenticateFailureAction({
-                error: error.error?.message ?? 'Une erreur est survenue',
+                error:
+                  error.error?.message ?? $localize`Une erreur est survenue`,
               })
             );
           })
@@ -72,7 +84,8 @@ export class AuthEffects {
           catchError(error => {
             return of(
               AuthActions.fetchForgotPasswordFailureAction({
-                error: error.error?.message ?? 'Une erreur est survenue',
+                error:
+                  error.error?.message ?? $localize`Une erreur est survenue`,
               })
             );
           })
@@ -92,7 +105,8 @@ export class AuthEffects {
           catchError(error => {
             return of(
               AuthActions.fetchResetPasswordFailureAction({
-                error: error.error?.message ?? 'Une erreur est survenue',
+                error:
+                  error.error?.message ?? $localize`Une erreur est survenue`,
               })
             );
           })
@@ -145,6 +159,13 @@ export class AuthEffects {
       switchMap(() =>
         this.authService.logout().pipe(
           map(() => {
+            const notification: Notification = {
+              message: $localize`Au revoir et à bientôt!`,
+              type: 'success',
+            };
+
+            this.store.dispatch(getNotificationStatusAction({ notification }));
+
             this.localStorageService.removeAccessToken();
             this.router.navigateByUrl('/auth/login');
             return AuthActions.fetchLogoutSuccessAction();
