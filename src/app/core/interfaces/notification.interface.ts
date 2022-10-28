@@ -1,11 +1,12 @@
 export interface NotificationState {
-    notification: Notification | null;
+  notification: Notification | null;
 }
 
 export interface Notification {
-    title: string | null;
-    message: string;
-    type: Type;
+  title?: string;
+  message: string;
+  type: Type;
+  duration?: number;
 }
 
 export type Type = 'success' | 'error' | 'info' | 'warning';

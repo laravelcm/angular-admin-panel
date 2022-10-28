@@ -48,12 +48,11 @@ export class AuthEffects {
             this.router.navigateByUrl('/dashboard');
 
             const notification: Notification = {
-              title: 'Connexion',
-              message: "Vous êtes desormais connecté!",
-              type: 'success'
-            }
+              message: $localize`Vous êtes desormais connecté!`,
+              type: 'success',
+            };
 
-            this.store.dispatch(getNotificationStatusAction({ notification }))
+            this.store.dispatch(getNotificationStatusAction({ notification }));
 
             return AuthActions.fetchAuthenticateSuccessAction({
               user: authResponse.data.user,
@@ -64,7 +63,8 @@ export class AuthEffects {
           catchError(error => {
             return of(
               AuthActions.fetchAuthenticateFailureAction({
-                error: error.error?.message ?? 'Une erreur est survenue',
+                error:
+                  error.error?.message ?? $localize`Une erreur est survenue`,
               })
             );
           })
@@ -84,7 +84,8 @@ export class AuthEffects {
           catchError(error => {
             return of(
               AuthActions.fetchForgotPasswordFailureAction({
-                error: error.error?.message ?? 'Une erreur est survenue',
+                error:
+                  error.error?.message ?? $localize`Une erreur est survenue`,
               })
             );
           })
@@ -104,7 +105,8 @@ export class AuthEffects {
           catchError(error => {
             return of(
               AuthActions.fetchResetPasswordFailureAction({
-                error: error.error?.message ?? 'Une erreur est survenue',
+                error:
+                  error.error?.message ?? $localize`Une erreur est survenue`,
               })
             );
           })
@@ -157,12 +159,12 @@ export class AuthEffects {
       switchMap(() =>
         this.authService.logout().pipe(
           map(() => {
-
-            this.store.dispatch(getNotificationStatusAction({ notification: {
-              title: 'Déconnexion',
-              message: "Vous êtes desormais déconnecté!",
+            const notification: Notification = {
+              message: $localize`Au revoir et à bientôt!`,
               type: 'success',
-            }}))
+            };
+
+            this.store.dispatch(getNotificationStatusAction({ notification }));
 
             this.localStorageService.removeAccessToken();
             this.router.navigateByUrl('/auth/login');

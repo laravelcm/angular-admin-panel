@@ -11,29 +11,35 @@ import { selectNotification } from '@app/core/store/notification/notification.se
   template: `
     <router-outlet></router-outlet>
     <network-status></network-status>
-    <simple-notification *ngIf="notification" (toggleShowNotification)="close($event)" [isOpen]="isOpen" [title]="notification.title" [message]="notification.message"><simple-notification>
+    <simple-notification
+      *ngIf="notification$ | async; let notification"
+      (toggleShowNotification)="close($event)"
+      [isOpen]="isOpen"
+      [duration]="duration"
+      [title]="notification?.title"
+      [message]="notification.message"></simple-notification>
   `,
 })
 export class AppComponent implements OnInit {
   mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-  notification!: Notification;
   isOpen!: boolean;
-  notification$: Observable<Notification | null> = this.store.select(selectNotification);
+  duration: number = 5000;
+
+  notification$: Observable<Notification | null> =
+    this.store.select(selectNotification);
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-
-    this.notification$.subscribe(data => {
-      if (data) {
-        this.notification = data;
+    this.notification$.subscribe(notification => {
+      if (notification) {
         this.isOpen = true;
         setTimeout(() => {
           this.isOpen = false;
-        }, 3000)
+        }, this.duration);
       }
-    })
+    });
 
     document.documentElement.setAttribute('data-theme', this.updateTheme());
 
@@ -52,6 +58,8 @@ export class AppComponent implements OnInit {
   }
 
   close(value: boolean) {
+    console.log('close', value);
+
     this.store.dispatch(resetNotificationStatusAction());
     this.isOpen = false;
   }

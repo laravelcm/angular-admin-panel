@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Type } from '@app/core/interfaces/notification.interface';
 
 @Component({
@@ -87,7 +88,7 @@ import { Type } from '@app/core/interfaces/notification.interface';
                 <button
                   (click)="toggle()"
                   type="button"
-                  class="inline-flex rounded-md bg-white text-slate-400 dark:bg-gray-900 dark:text-slate-300 dark:hover:text-slate-400 hover:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                  class="inline-flex rounded-md bg-white text-slate-400 dark:bg-gray-800 dark:text-slate-300 dark:hover:text-slate-400 hover:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                   <span class="sr-only" i18n>Fermer</span>
                   <svg
                     class="h-5 w-5"
@@ -119,9 +120,10 @@ import { Type } from '@app/core/interfaces/notification.interface';
 export class SimpleNotificationComponent {
   @Input('isOpen') showNotification!: boolean;
   @Input() class!: string;
-  @Input() title!: string | null | undefined;
-  @Input() message: string | undefined;
+  @Input() title!: string | undefined;
+  @Input() message!: string;
   @Input() type: Type = 'success';
+  @Input() duration = 5000;
 
   @Output() toggleShowNotification: EventEmitter<boolean> =
     new EventEmitter<boolean>();
