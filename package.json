@@ -26,7 +26,7 @@
     "@ngrx/effects": "^16.1.0",
     "@ngrx/router-store": "^16.2.0",
     "@ngrx/store": "^16.1.0",
-    "@ngrx/store-devtools": "^13.2.0",
+    "@ngrx/store-devtools": "^16.2.0",
     "@sentry/angular": "^7.12.1",
     "@sentry/tracing": "^7.12.1",
     "@tailwindcss/aspect-ratio": "^0.4.1",
