@@ -54,7 +54,7 @@
     "@types/jasmine": "~3.10.0",
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "6.4.0",
-    "@typescript-eslint/parser": "5.27.1",
+    "@typescript-eslint/parser": "6.4.1",
     "autoprefixer": "^10.4.8",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.8.0",
